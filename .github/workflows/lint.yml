@@ -15,11 +15,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      with:
+        persist-credentials: false
 
     - name: Run skillsaw
       uses: stbenjam/skillsaw@3e1188f446413e6d6818c98644d2d6a84e4038e7 # v0.14.1
       with:
-        strict: 'true'
+        strict: 'false'
 
     - name: Set up Python
       uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6

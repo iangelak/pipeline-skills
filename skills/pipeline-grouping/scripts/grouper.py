@@ -22,6 +22,17 @@ from pathlib import Path
 # --- Helpers ---
 
 
+def workspace_path(raw: str) -> Path:
+    """Validate that a path resolves inside cwd to prevent path traversal."""
+    path = Path(raw).resolve()
+    cwd = Path.cwd().resolve()
+    try:
+        path.relative_to(cwd)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"path must be inside {cwd}: {path}")
+    return path
+
+
 def load_state(path: Path) -> dict:
     """Load work file or return empty state."""
     if path.exists():
@@ -281,7 +292,7 @@ def main() -> int:
 
     # add-group
     p = sub.add_parser("add-group", help="Create a new group")
-    p.add_argument("--state", type=Path, required=True, help="Work file path")
+    p.add_argument("--state", type=workspace_path, required=True, help="Work file path")
     p.add_argument("--summary", required=True, help="Group summary")
     p.add_argument("--jobs", required=True, help="Comma-separated job IDs")
     p.add_argument("--error", action="append", help="Error message (repeatable)")
@@ -289,23 +300,28 @@ def main() -> int:
 
     # add-job
     p = sub.add_parser("add-job", help="Add a job to an existing group")
-    p.add_argument("--state", type=Path, required=True, help="Work file path")
+    p.add_argument("--state", type=workspace_path, required=True, help="Work file path")
     p.add_argument("--group", required=True, help="Group key")
     p.add_argument("--job", required=True, help="Job ID")
     p.add_argument("--error", help="Error message")
 
     # status
     p = sub.add_parser("status", help="Show current grouping state")
-    p.add_argument("--state", type=Path, required=True, help="Work file path")
+    p.add_argument("--state", type=workspace_path, required=True, help="Work file path")
     p.add_argument("--expected-jobs", help="Comma-separated expected job IDs")
 
     # finalize
     p = sub.add_parser("finalize", help="Validate and write grouping.json")
-    p.add_argument("--state", type=Path, required=True, help="Work file path")
+    p.add_argument("--state", type=workspace_path, required=True, help="Work file path")
     p.add_argument(
         "--expected-jobs", required=True, help="Comma-separated expected job IDs"
     )
-    p.add_argument("--output", required=True, help="Output path for grouping.json")
+    p.add_argument(
+        "--output",
+        type=workspace_path,
+        required=True,
+        help="Output path for grouping.json",
+    )
 
     args = parser.parse_args()
     return {
