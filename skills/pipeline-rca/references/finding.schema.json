@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pipeline Analysis Finding",
+  "description": "Schema for finding.json — a per-group structured finding written by AI during Phase 3 root-cause analysis. Validated by the orchestrator immediately after the analysis agent completes.",
+  "type": "object",
+  "required": [
+    "group_id",
+    "title",
+    "collections",
+    "error_summary",
+    "suggested_resolution_summary",
+    "has_resolution_file",
+    "confidence",
+    "confidence_justification",
+    "cascade",
+    "group_consistency",
+    "feedback_status",
+    "references",
+    "resources_used"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "group_id": {
+      "type": "string",
+      "description": "Slug identifier for the failure group, used in directory paths (e.g. '01-numpy-constraint-conflict')."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short descriptive title summarizing the failure group."
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Collections affected by this failure group. Can be empty for non-collection-specific groups."
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Pipeline actions that failed (e.g. ['build-wheels']). When a group spans multiple (collection, action) pairs, lists all unique actions."
+    },
+    "error_summary": {
+      "type": "string",
+      "description": "Human-readable one-line summary of the error."
+    },
+    "suggested_resolution_summary": {
+      "type": "string",
+      "description": "One-line summary of the suggested fix."
+    },
+    "has_resolution_file": {
+      "type": "boolean",
+      "description": "Whether a sections/resolution.md file exists with detailed resolution steps."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Confidence level in the root-cause diagnosis."
+    },
+    "confidence_justification": {
+      "type": "string",
+      "description": "Evidence and reasoning supporting the confidence level."
+    },
+    "cascade": {
+      "type": "boolean",
+      "description": "Whether this failure cascades from an upstream failure rather than being an independent root cause."
+    },
+    "group_consistency": {
+      "type": "string",
+      "enum": ["consistent", "mixed"],
+      "description": "Whether all jobs show the same error symptoms ('consistent') or exhibit different error manifestations despite sharing a root cause ('mixed'). Same root cause with variant-specific symptoms = 'mixed'."
+    },
+    "feedback_status": {
+      "type": "string",
+      "enum": ["included", "not_applicable"],
+      "description": "Whether workflow feedback was written. 'included' when feedback.md was written, 'not_applicable' when no process observations apply."
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Canonical repository path consulted during analysis."
+          },
+          "description": {
+            "type": "string",
+            "description": "How this reference was used during the investigation and what insight it provided."
+          }
+        }
+      },
+      "description": "Repository files consulted during analysis, with descriptions of how each was used."
+    },
+    "target_repo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Full URL of the GitLab repository where the fix should be applied (e.g. 'https://gitlab.com/redhat/rhel-ai/rhai/pipeline'). Omit when the fix location is unclear or no code fix exists."
+    },
+    "target_repo_reason": {
+      "type": "string",
+      "description": "1-2 sentence justification for why target_repo was chosen (e.g. which files need changing and why they live in that repo)."
+    },
+    "resources_used": {
+      "type": "object",
+      "description": "Workspace resources consulted during analysis.",
+      "required": ["agent_docs", "skills", "tools"],
+      "additionalProperties": false,
+      "properties": {
+        "agent_docs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Agent documentation filename (e.g. 'package-constraints.md')."
+              },
+              "description": {
+                "type": "string",
+                "description": "How this documentation was used and what insight it provided."
+              }
+            }
+          },
+          "description": "Agent documentation files consulted during analysis."
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Skill name."
+              },
+              "description": {
+                "type": "string",
+                "description": "How this skill was used and what it accomplished."
+              }
+            }
+          },
+          "description": "Skills invoked during analysis."
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Tool or MCP server name."
+              },
+              "description": {
+                "type": "string",
+                "description": "How this tool was used beyond baseline operations."
+              }
+            }
+          },
+          "description": "Tools used during analysis beyond what the prompt explicitly instructed."
+        }
+      }
+    }
+  }
+}

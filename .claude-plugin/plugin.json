@@ -1,0 +1,8 @@
+{
+  "name": "pipeline-skills",
+  "version": "0.1.0",
+  "description": "AI skills for AIPCC pipeline failure analysis — error grouping and root cause analysis",
+  "author": { "name": "opendatahub-io" },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/opendatahub-io/pipeline-skills"
+}
