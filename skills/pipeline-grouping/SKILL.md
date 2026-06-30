@@ -47,7 +47,7 @@ Read the `job_manifest` field from `/workspace/_context/grouping-context.json` f
 
 ### Tools
 
-- **Group builder**: `/workspace/_tools/pipeline-grouping/scripts/grouper.py` — CLI tool for building groups incrementally via subcommands
+- **Group builder**: `${CLAUDE_SKILL_DIR}/scripts/grouper.py` — CLI tool for building groups incrementally via subcommands
 - **Work file**: `/workspace/grouping.work.json` — pass as `--state` on all subcommands
 - **Output file**: `/workspace/grouping.json` — pass as `--output` on `finalize`
 - **Expected job IDs**: Read the `expected_jobs` field from `/workspace/_context/grouping-context.json`
@@ -56,7 +56,7 @@ Subcommand reference:
 
 - **Create a group** — one call per root cause, with all its jobs and error messages:
   ```bash
-  python3 /workspace/_tools/pipeline-grouping/scripts/grouper.py add-group \
+  python3 ${CLAUDE_SKILL_DIR}/scripts/grouper.py add-group \
     --state /workspace/grouping.work.json \
     --expected-jobs <expected_jobs> \
     --summary "<1-2 sentence description of the shared root cause>" \
@@ -68,18 +68,18 @@ Subcommand reference:
 
 - **Add a straggler job** — for corrections after initial grouping:
   ```bash
-  python3 /workspace/_tools/pipeline-grouping/scripts/grouper.py add-job \
+  python3 ${CLAUDE_SKILL_DIR}/scripts/grouper.py add-job \
     --state /workspace/grouping.work.json --group <key> --job <id> --error "<msg>"
   ```
 
 - **Check progress** — view groups and unassigned jobs:
   ```bash
-  python3 /workspace/_tools/pipeline-grouping/scripts/grouper.py status --state /workspace/grouping.work.json
+  python3 ${CLAUDE_SKILL_DIR}/scripts/grouper.py status --state /workspace/grouping.work.json
   ```
 
 - **Finalize** — validate completeness and produce output:
   ```bash
-  python3 /workspace/_tools/pipeline-grouping/scripts/grouper.py finalize \
+  python3 ${CLAUDE_SKILL_DIR}/scripts/grouper.py finalize \
     --state /workspace/grouping.work.json \
     --expected-jobs <expected_jobs> \
     --output /workspace/grouping.json
