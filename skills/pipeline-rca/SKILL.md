@@ -28,7 +28,7 @@ The orchestrator prepares the workspace with:
 - `/workspace/groups/<group_id>/jobs/<id>-<name>/` — Job directories with trace logs and preprocessed errors
 - `/workspace/pipeline-context.json` — Pipeline metadata
 - `/workspace/_repos/` — Shallow clones for git-based investigation
-- `/workspace/_tools/pipeline-rca/references/` — Section templates and finding schema
+- `${CLAUDE_SKILL_DIR}/references/` — Section templates and finding schema
 
 Read `/workspace/_context/rca-context.json` first. It contains:
 
@@ -76,8 +76,8 @@ Read `affected_jobs_table` and `file_paths_table` from `/workspace/_context/rca-
 
 - **Clean log script**: `/workspace/_tools/pipeline_failure_analyzer/prepare/log_cleaner.py`
 - **Patterns flag**: `--patterns /workspace/_tools/pipeline_failure_analyzer/references/aipcc-patterns.txt`
-- **Section templates**: `/workspace/_tools/pipeline-rca/references/error-overview-section-template.md` (error-overview), `/workspace/_tools/pipeline-rca/references/rca-section-template.md` (root-cause), `/workspace/_tools/pipeline-rca/references/resolution-section-template.md` (resolution)
-- **Finding schema**: `/workspace/_tools/pipeline-rca/references/finding.schema.json`
+- **Section templates**: `${CLAUDE_SKILL_DIR}/references/error-overview-section-template.md` (error-overview), `${CLAUDE_SKILL_DIR}/references/rca-section-template.md` (root-cause), `${CLAUDE_SKILL_DIR}/references/resolution-section-template.md` (resolution)
+- **Finding schema**: `${CLAUDE_SKILL_DIR}/references/finding.schema.json`
 - **Output directory**: Read `group_dir` from `/workspace/_context/rca-context.json`
 
 ### Dependency Versions
@@ -170,9 +170,9 @@ Write each section file knowing where it appears in the final report. The **Erro
    Run the cheapest check that would distinguish between the competing explanations. If the evidence contradicts your theory, revise the diagnosis. If verification is not possible, lower confidence accordingly and state in `confidence_justification` what evidence would resolve the ambiguity.
 
 6. Read the section templates for guidance on structure:
-   - Error overview: `/workspace/_tools/pipeline-rca/references/error-overview-section-template.md`
-   - Root-cause: `/workspace/_tools/pipeline-rca/references/rca-section-template.md`
-   - Resolution: `/workspace/_tools/pipeline-rca/references/resolution-section-template.md`
+   - Error overview: `${CLAUDE_SKILL_DIR}/references/error-overview-section-template.md`
+   - Root-cause: `${CLAUDE_SKILL_DIR}/references/rca-section-template.md`
+   - Resolution: `${CLAUDE_SKILL_DIR}/references/resolution-section-template.md`
 
 7. Create the `<group_dir>/sections/` directory and write section files:
 
@@ -200,7 +200,7 @@ Write each section file knowing where it appears in the final report. The **Erro
    - Configuration exists for a parent package but misses its dependencies
    - A settings/config value with no automated validation (typos, template syntax errors)
 
-8. Write `<group_dir>/finding.json` with structured finding data. Read the schema for field definitions: `/workspace/_tools/pipeline-rca/references/finding.schema.json`. Key fields:
+8. Write `<group_dir>/finding.json` with structured finding data. Read the schema for field definitions: `${CLAUDE_SKILL_DIR}/references/finding.schema.json`. Key fields:
 
    **Required fields:**
    - `group_id`: Use `group.id` from `/workspace/_context/rca-context.json` (the directory name slug)
