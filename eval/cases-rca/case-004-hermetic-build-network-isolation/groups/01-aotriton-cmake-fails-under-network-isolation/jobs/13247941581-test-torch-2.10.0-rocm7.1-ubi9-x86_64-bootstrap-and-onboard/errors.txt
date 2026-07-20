@@ -1,0 +1,33 @@
+L2274: 20:20:55 ERROR aotriton: command failed with exit code 1: /opt/app-root/lib64/python3.12/site-packages/fromager/run_network_isolation.sh cmake -DCMAKE_INSTALL_PREFIX=/mnt/work-dir/aotriton-0.11.2b0/aotriton-wheel/aotriton '-DAMDGPU_TARGETS=gfx90a;gfx942;gfx950' -DCMAKE_BUILD_TYPE=Release -DCMAKE_MODULE_PATH=/usr/lib64/llvm-triton-57088512/lib/cmake/llvm/ -DAOTRITON_USE_TORCH=OFF -GNinja -S /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0 -B /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build '-DAOTRITON_TARGET_ARCH=gfx90a;gfx942;gfx950'
+L2313: aotriton: WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7497f2720>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+L2314: aotriton: WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7498256a0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+L2315: aotriton: WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7493b61b0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+L2316: aotriton: WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7493b6720>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+L2317: aotriton: WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7493b6900>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+L2318: aotriton: ERROR: Could not find a version that satisfies the requirement filelock (from versions: none)
+L2319: aotriton: ERROR: No matching distribution found for filelock
+L2353: aotriton: Traceback (most recent call last):
+L2354: aotriton:   File "<frozen runpy>", line 198, in _run_module_as_main
+L2355: aotriton:   File "<frozen runpy>", line 88, in _run_code
+L2356: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/generate.py", line 5, in <module>
+L2357: aotriton:     from .rules import (
+L2358: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/rules/__init__.py", line 5, in <module>
+L2359: aotriton:     from .flash import (
+L2360: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/rules/flash/__init__.py", line 4, in <module>
+L2361: aotriton:     from v3python.op import (
+L2362: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/op/__init__.py", line 4, in <module>
+L2363: aotriton:     from .operator import Operator
+L2364: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/op/operator.py", line 4, in <module>
+L2365: aotriton:     from ..base import (
+L2366: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/base/__init__.py", line 5, in <module>
+L2367: aotriton:     from . import typed_choice
+L2368: aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/base/typed_choice.py", line 6, in <module>
+L2369: aotriton:     import numpy as np
+L2370: aotriton: ModuleNotFoundError: No module named 'numpy'
+L2371: aotriton: CMake Error at v3src/CMakeLists.txt:83 (execute_process):
+L2372: aotriton:   execute_process failed command indexes:
+L2374: aotriton:     1: "Child return code: 1"
+L2377: aotriton: -- Configuring incomplete, errors occurred!
+L2379: 20:20:55 ERROR torch: could not handle build-system dependency aotriton (0.11.2b0) for toplevel dependency torch (2.10.0) because Command '['/opt/app-root/lib64/python3.12/site-packages/fromager/run_network_isolation.sh', 'cmake', ...]' returned non-zero exit status 1.
+L2404: ERROR: Job failed: exit code 1
+[Filtered: 2404 total lines -> 29 shown, 4 ERROR, 5 WARNING]

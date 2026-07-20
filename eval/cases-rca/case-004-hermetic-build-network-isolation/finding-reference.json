@@ -1,0 +1,21 @@
+{
+  "group_id": "01-aotriton-cmake-fails-under-network-isolation",
+  "title": "aotriton cmake build fails under network isolation -- pip cannot fetch dependencies",
+  "collections": ["test-torch"],
+  "actions": ["bootstrap-and-onboard"],
+  "error_summary": "aotriton's cmake configure creates a venv and pip-installs dependencies at configure time, but Fromager's run_network_isolation.sh blocks network access, causing pip to fail with DNS resolution errors and subsequently ModuleNotFoundError for numpy",
+  "suggested_resolution_summary": "Update the aotriton Fromager plugin to pre-install filelock and numpy into the build venv before entering the network-isolated build phase, or patch aotriton's CMakeLists.txt to skip the pip invocation when packages are already available",
+  "has_resolution_file": true,
+  "confidence": "high",
+  "confidence_justification": "The error trace clearly shows pip retrying against PyPI inside run_network_isolation.sh (which blocks network access by design). The DNS failure pattern (Name or service not known) is the expected behavior under network isolation, not a transient infrastructure issue. The failure is deterministic and will reproduce on every retry.",
+  "cascade": false,
+  "transient": false,
+  "group_consistency": "consistent",
+  "feedback_status": "not_applicable",
+  "references": [],
+  "resources_used": {
+    "agent_docs": [],
+    "skills": [],
+    "tools": []
+  }
+}

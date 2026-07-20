@@ -9,6 +9,7 @@
   "confidence": "high",
   "confidence_justification": "Error messages directly name the failing dependency (pymilvus<4.0,>=3.0.0) and the resolution mechanism (release-age cooldown on x86_64, no sdist on aarch64). PyPI metadata confirms langchain-milvus 0.4.0 introduced the pymilvus>=3.0.0 requirement (0.3.3 used pymilvus<3.0,>=2.6.0). pymilvus 3.0.0 is confirmed as wheel-only with no sdist. The error chain from langchain-milvus → pymilvus is directly visible in trace logs across both x86_64 and aarch64 jobs.",
   "cascade": false,
+  "transient": false,
   "target_repo": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline",
   "target_repo_reason": "The fix requires adding a version constraint to langchain-milvus in the requirements files under collections/rhai/*/requirements/team-notebooks-images.txt, which are in the pipeline repository.",
   "group_consistency": "mixed",

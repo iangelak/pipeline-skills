@@ -9,6 +9,7 @@
   "confidence": "high",
   "confidence_justification": "The error message directly identifies the cause (IncompleteRead during HTTP transfer). Supporting evidence: (1) an earlier recoverable network error (RemoteDisconnected for charset_normalizer) on the same CPU job confirms network instability on the runner; (2) the two jobs failed at different progress points (77% vs 84%) with different byte counts, confirming non-determinism; (3) other aarch64 bootstrap jobs for smaller collections succeeded in the same pipeline run, consistent with a transient issue that is more likely to hit longer-running jobs.",
   "cascade": false,
+  "transient": true,
   "group_consistency": "consistent",
   "feedback_status": "included",
   "references": [],

@@ -78,6 +78,7 @@ Read `affected_jobs_table` and `file_paths_table` from `/workspace/_context/rca-
 - **Patterns flag**: `--patterns /workspace/_tools/pipeline_failure_analyzer/references/aipcc-patterns.txt`
 - **Section templates**: `${CLAUDE_SKILL_DIR}/references/error-overview-section-template.md` (error-overview), `${CLAUDE_SKILL_DIR}/references/rca-section-template.md` (root-cause), `${CLAUDE_SKILL_DIR}/references/resolution-section-template.md` (resolution)
 - **Finding schema**: `${CLAUDE_SKILL_DIR}/references/finding.schema.json`
+- **Transient patterns**: `${CLAUDE_SKILL_DIR}/references/transient-patterns.md`
 - **Output directory**: Read `group_dir` from `/workspace/_context/rca-context.json`
 
 ### Dependency Versions
@@ -169,12 +170,16 @@ Write each section file knowing where it appears in the final report. The **Erro
 
    Run the cheapest check that would distinguish between the competing explanations. If the evidence contradicts your theory, revise the diagnosis. If verification is not possible, lower confidence accordingly and state in `confidence_justification` what evidence would resolve the ambiguity.
 
-6. Read the section templates for guidance on structure:
+6. **Transient failure classification** -- After determining the root cause, assess whether the failure is **transient**: likely to succeed if the job is simply retried without any code, configuration, or infrastructure changes. Before classifying as transient, verify that the error originates from infrastructure or system layers (runner, network, registry) and not from user-controlled test output or application code. When the failure may be transient (network errors, registry issues, infrastructure flakes, intermittent HTTP errors), read `${CLAUDE_SKILL_DIR}/references/transient-patterns.md` for criteria and examples. Use the examples to inform your judgment -- generalize to novel transient failures rather than requiring exact pattern matches.
+
+   Set `transient: true` in `finding.json` when you classify the failure as transient. When `transient` is true, the orchestrator may auto-retry the failed jobs instead of filing a Jira ticket. When a failure is both a cascade and the upstream failure is transient, set `transient: false` on the cascade group -- the retry should target the upstream job, not the cascaded one.
+
+7. Read the section templates for guidance on structure:
    - Error overview: `${CLAUDE_SKILL_DIR}/references/error-overview-section-template.md`
    - Root-cause: `${CLAUDE_SKILL_DIR}/references/rca-section-template.md`
    - Resolution: `${CLAUDE_SKILL_DIR}/references/resolution-section-template.md`
 
-7. Create the `<group_dir>/sections/` directory and write section files:
+8. Create the `<group_dir>/sections/` directory and write section files:
 
    **Required deliverables:**
    - `error-overview.md` — Brief narrative of the error symptom plus key quoted error lines. Use ` ```error ` fenced blocks. This is "what happened" — keep concise (5-20 lines).
@@ -200,7 +205,7 @@ Write each section file knowing where it appears in the final report. The **Erro
    - Configuration exists for a parent package but misses its dependencies
    - A settings/config value with no automated validation (typos, template syntax errors)
 
-8. Write `<group_dir>/finding.json` with structured finding data. Read the schema for field definitions: `${CLAUDE_SKILL_DIR}/references/finding.schema.json`. Key fields:
+9. Write `<group_dir>/finding.json` with structured finding data. Read the schema for field definitions: `${CLAUDE_SKILL_DIR}/references/finding.schema.json`. Key fields:
 
    **Required fields:**
    - `group_id`: Use `group.id` from `/workspace/_context/rca-context.json` (the directory name slug)
@@ -219,6 +224,7 @@ Write each section file knowing where it appears in the final report. The **Erro
 
    **Optional fields:**
    - `actions`: Pipeline actions that failed (e.g., `["build-wheels"]`). When a group spans multiple actions, include all unique values.
+   - `transient`: Set to `true` when the failure is transient -- likely resolvable by retrying the job without code or configuration changes (network errors, registry flakes, infrastructure issues). Defaults to `false`. When `true`, the orchestrator may auto-retry the failed jobs instead of filing a Jira ticket.
    - `target_repo`: Full GitLab URL of the repository where the fix should be applied. Construct from the **Known Repositories** table above. Omit for infrastructure failures or when the fix location is unclear.
    - `target_repo_reason`: 1-2 sentence justification for why `target_repo` was chosen — which files need changing and why they live in that repository. Required when `target_repo` is set.
 
@@ -242,6 +248,7 @@ Write each section file knowing where it appears in the final report. The **Erro
      "confidence": "high",
      "confidence_justification": "<Evidence: log lines, cross-job consistency, or patterns that support the confidence level>",
       "cascade": false,
+      "transient": false,
       "target_repo": "https://gitlab.com/<project-path>",
       "target_repo_reason": "<Why this repo — which files need changing and why they live there>",
       "group_consistency": "consistent",
@@ -258,7 +265,7 @@ Write each section file knowing where it appears in the final report. The **Erro
    }
    ```
 
-9. Verify your `finding.json` is valid: all required fields present, `confidence` is one of `"high"`/`"medium"`/`"low"`, `group_consistency` is `"consistent"` or `"mixed"`, `feedback_status` matches whether `feedback.md` exists, `references` lists all consulted files using canonical paths, `resources_used` has all three sub-fields as arrays.
+10. Verify your `finding.json` is valid: all required fields present, `confidence` is one of `"high"`/`"medium"`/`"low"`, `group_consistency` is `"consistent"` or `"mixed"`, `feedback_status` matches whether `feedback.md` exists, `transient` is a boolean (defaults to `false` if omitted), `references` lists all consulted files using canonical paths, `resources_used` has all three sub-fields as arrays.
 
 ### Log Analysis Guidelines
 
@@ -267,7 +274,7 @@ Write each section file knowing where it appears in the final report. The **Erro
 - Common error types:
   - **Build failures**: Look for the compiler/build tool error before the generic "Failed to build" wrapper.
   - **Dependency resolution**: The deepest package in the chain is the actual failure, not the top-level package.
-  - **Upload failures**: Usually transient (network/registry) or metadata issues.
+  - **Upload failures**: Usually transient (network/registry) or metadata issues -- see step 6 for transient classification.
   - **Timeouts**: Check job duration vs. typical duration. Look for hanging operations.
 - When quoting log lines in section files, redact credentials, tokens, passwords, and API keys. Replace the value with `[REDACTED]`. Common indicators: `password=`, `token=`, `secret=`, `Bearer `, credential-like strings in URLs.
 

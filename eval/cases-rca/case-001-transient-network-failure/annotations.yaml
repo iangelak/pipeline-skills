@@ -3,6 +3,7 @@ source: "pipeline #2653573062, main, 2026-07-06, group 03"
 confidence_expected: high
 has_resolution: false
 cascade: false
+transient_expected: true
 group_consistency: consistent
 notes: |
   Real artifacts. Transient network failure (IncompleteRead) on aarch64 runners.

@@ -1,0 +1,17 @@
+{
+  "id": "13247941581",
+  "name": "test-torch-2.10.0-rocm7.1-ubi9-x86_64-bootstrap-and-onboard",
+  "stage": "bootstrap",
+  "status": "failed",
+  "url": "https://gitlab.com/redhat/rhel-ai/wheels/builder/-/jobs/13247941581",
+  "duration": 657.817879,
+  "failure_reason": "script_failure",
+  "kind": "",
+  "allow_failure": false,
+  "retried": false,
+  "collection": "test-torch",
+  "variant": "rocm7.1",
+  "os": "ubi9",
+  "architecture": "x86_64",
+  "action": "bootstrap-and-onboard"
+}

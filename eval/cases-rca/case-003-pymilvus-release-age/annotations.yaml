@@ -3,6 +3,7 @@ source: "pipeline #2689294783, 3.5-stable, 2026-07-20, group 03"
 confidence_expected: high
 has_resolution: true
 cascade: false
+transient_expected: false
 group_consistency: mixed
 notes: |
   Real artifacts. The failure manifests differently per architecture: x86_64 hits

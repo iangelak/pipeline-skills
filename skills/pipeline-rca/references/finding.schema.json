@@ -96,6 +96,11 @@
       },
       "description": "Repository files consulted during analysis, with descriptions of how each was used."
     },
+    "transient": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the failure is transient -- likely resolvable by retrying the failed job(s) without any code or configuration changes. Set true only when the root cause is an external, non-deterministic infrastructure issue (e.g., connection resets, DNS resolution failures, HTTP 429/502/503/504 from upstream services, registry connection refused). Do not set true for certificate verification failures, authentication errors, manifest-not-found, or network errors during hermetic build phases. See transient-patterns.md for detailed criteria. When true, the orchestrator may auto-retry the job (up to a bounded maximum) instead of filing a Jira ticket."
+    },
     "target_repo": {
       "type": "string",
       "format": "uri",

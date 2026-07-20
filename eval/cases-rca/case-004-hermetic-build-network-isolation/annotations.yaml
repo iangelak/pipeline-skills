@@ -1,0 +1,14 @@
+difficulty: medium
+source: "builder MR !1910 pipeline #2347149967, 2026-02-24, group 01"
+confidence_expected: high
+has_resolution: true
+cascade: false
+transient_expected: false
+group_consistency: consistent
+notes: |
+  Real artifacts from wheels/builder. Adversarial case for transient classification:
+  DNS failures (Name or service not known) look like transient network errors but
+  occur inside Fromager's run_network_isolation.sh hermetic build sandbox where
+  outbound network is intentionally blocked. The skill must recognize this is NOT
+  transient and requires a code/configuration fix to pre-install the missing
+  dependencies before entering network isolation.

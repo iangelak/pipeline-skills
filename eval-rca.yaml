@@ -33,7 +33,8 @@ dataset:
       - job-metadata.json: Job metadata
     - annotations.yaml: Expected outcomes with fields: difficulty (easy|medium),
       confidence_expected (high|medium|low), has_resolution (boolean),
-      cascade (boolean), group_consistency (consistent|mixed), source, notes
+      cascade (boolean), transient_expected (boolean), group_consistency
+      (consistent|mixed), source, notes
     - finding-reference.json: Gold standard finding.json for comparison
     - sections-reference/: Gold standard section files (error-overview.md,
       root-cause.md, resolution.md, feedback.md)
@@ -46,7 +47,8 @@ outputs:
       - finding.json: Structured finding with required fields: group_id, title,
         collections (array), error_summary, suggested_resolution_summary,
         has_resolution_file (boolean), confidence (high|medium|low),
-        confidence_justification, cascade (boolean), group_consistency
+        confidence_justification, cascade (boolean), transient (boolean),
+        group_consistency
         (consistent|mixed), feedback_status (included|not_applicable),
         references (array of {path, description}), resources_used
         ({agent_docs[], skills[], tools[]})
@@ -177,6 +179,32 @@ judges:
       else:
           return (False, f"Confidence mismatch: actual={actual}, expected={expected}")
 
+  - name: transient_classification
+    description: |
+      Validates that the transient field in finding.json matches the expected
+      value from annotations. This is critical for auto-retry decisions --
+      misclassifying a non-transient failure as transient wastes retry budget,
+      while missing a transient failure delays pipeline recovery.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      ann = outputs.get("annotations", {})
+      expected = ann.get("transient_expected")
+      if expected is None:
+          return (True, "No transient_expected in annotations -- skipped")
+      finding_files = [k for k in files if k.endswith("finding.json")]
+      if not finding_files:
+          return (False, "No finding.json to check transient classification")
+      try:
+          finding = json.loads(files[finding_files[0]])
+      except (json.JSONDecodeError, KeyError):
+          return (False, "Cannot parse finding.json")
+      actual = finding.get("transient", False)
+      if actual == expected:
+          return (True, f"Transient classification correct: {actual}")
+      else:
+          return (False, f"Transient mismatch: actual={actual}, expected={expected}")
+
   - name: analysis_quality
     description: |
       LLM judge scoring 1-5 on diagnostic accuracy, evidence quality,
@@ -194,6 +222,8 @@ thresholds:
   resolution_consistency:
     min_pass_rate: 1.0
   confidence_check:
+    min_pass_rate: 1.0
+  transient_classification:
     min_pass_rate: 1.0
   analysis_quality:
     min_mean: 3.5

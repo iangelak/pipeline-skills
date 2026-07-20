@@ -1,0 +1,25 @@
+{
+  "group": {
+    "id": "01-aotriton-cmake-fails-under-network-isolation",
+    "name": "aotriton cmake configure fails under Fromager network isolation -- pip cannot install filelock",
+    "collections": [
+      "test-torch"
+    ],
+    "actions": [
+      "bootstrap-and-onboard"
+    ],
+    "error_description": "aotriton cmake configure fails under Fromager network isolation -- pip cannot reach PyPI to install filelock, then numpy import fails during code generation.\n\nError messages:\n- NewConnectionError: Failed to establish a new connection: [Errno -2] Name or service not known\n- ERROR: No matching distribution found for filelock\n- ModuleNotFoundError: No module named 'numpy'"
+  },
+  "pipeline": {
+    "project_path": "redhat/rhel-ai/wheels/builder",
+    "project_path_encoded": "redhat%2Frhel-ai%2Fwheels%2Fbuilder",
+    "ref": "refs/merge-requests/1910/head",
+    "sha": "60c0f6924cb3560dce8247cef3b0bf0f6ce08691",
+    "builder_project_path": "redhat/rhel-ai/wheels/builder"
+  },
+  "affected_jobs_table": "| Job ID | Job Name | Variant | Architecture | Stage | URL | Duration |\n|--------|----------|---------|-------------|-------|-----|----------|\n| 13247941581 | test-torch-2.10.0-rocm7.1-ubi9-x86_64-bootstrap-and-onboard | rocm7.1 | x86_64 | bootstrap | https://gitlab.com/redhat/rhel-ai/wheels/builder/-/jobs/13247941581 | 657.8s |",
+  "file_paths_table": "| Job Name | Trace Log | Preprocessed Errors |\n|----------|-----------|---------------------|\n| test-torch-2.10.0-rocm7.1-ubi9-x86_64-bootstrap-and-onboard | /workspace/groups/01-aotriton-cmake-fails-under-network-isolation/jobs/13247941581-test-torch-2.10.0-rocm7.1-ubi9-x86_64-bootstrap-and-onboard/trace.log | /workspace/groups/01-aotriton-cmake-fails-under-network-isolation/jobs/13247941581-test-torch-2.10.0-rocm7.1-ubi9-x86_64-bootstrap-and-onboard/errors.txt |",
+  "dependency_versions": "",
+  "repo_submodule_path": "",
+  "group_dir": "/workspace/groups/01-aotriton-cmake-fails-under-network-isolation"
+}

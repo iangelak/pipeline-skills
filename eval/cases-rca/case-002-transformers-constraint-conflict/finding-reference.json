@@ -9,6 +9,7 @@
   "confidence": "high",
   "confidence_justification": "The error message directly names the conflicting specifier (transformers>=5.6.0) and constraint (transformers<5). The constraint file comment (AIPCC-9443) documents the original intent. The merge commit AIPCC-27609 updated vllm from 0.21.0 to 0.24.0 without updating the constraint. Both aarch64 and x86_64 jobs fail identically with the same error at the same resolution step. The earlier successful resolution of transformers>=4.38.0 (from xgrammar) to 4.57.6 confirms the constraint is active and the conflict is specifically with the vllm-originated specifier.",
   "cascade": false,
+  "transient": false,
   "target_repo": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline",
   "target_repo_reason": "The fix requires updating collections/rhaiis/cpu-ubi9/constraints.txt in the pipeline repository, where the stale transformers<5 constraint is defined.",
   "group_consistency": "consistent",

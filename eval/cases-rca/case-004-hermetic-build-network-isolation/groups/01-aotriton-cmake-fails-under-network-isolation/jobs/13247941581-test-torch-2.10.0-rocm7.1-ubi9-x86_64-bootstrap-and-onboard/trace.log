@@ -1,0 +1,79 @@
+Running with gitlab-runner 18.2.0 (c24769e8)
+  on pe-runners fcDulfre2, system ID: s_3bd6ded2822c
+  feature flags: FF_SCRIPT_SECTIONS:true
+Resolving secrets
+Preparing the "docker+machine" executor
+Using Docker executor with image registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.5.0 ...
+Authenticating with credentials from job payload (GitLab Registry)
+Pulling docker image registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.5.0 ...
+Running on runner-fcdulfre2-project-58339326-concurrent-0 via runner-fcdulfre2-aipcc-large-1771963807-c4803306...
+Getting source from Git repository
+Gitaly correlation ID: 9d319ac1705df272-IAD
+Checking out 60c0f692 as detached HEAD (ref is refs/merge-requests/1910/head)
+Executing "step_script" stage of the job script
+
+[... 2244 lines trimmed for eval fixture ...]
+
+20:19:59 INFO aotriton: bootstrapping aotriton as build-system dependency of [(<RequirementType.TOP_LEVEL: 'toplevel'>, <Requirement('torch')>, <Version('2.10.0')>)]
+20:19:59 INFO aotriton: incoming requirement aotriton matches constraint aotriton==0.11.2b0. Will apply both.
+20:19:59 INFO aotriton: new build-system dependency aotriton resolves to 0.11.2b0
+20:20:33 INFO aotriton: aotriton: extracted git SHA dd1b68b604b5258ee7a9f7b66ad95e7a82c18065
+20:20:33 INFO aotriton: aotriton: creating tar ball /mnt/sdists-repo/downloads/aotriton-0.11.2b0.tar.gz
+20:20:41 INFO aotriton: prepared source for aotriton at /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0
+20:20:41 INFO aotriton: created build environment in /mnt/work-dir/aotriton-0.11.2b0/build-3.12.9
+20:20:41 INFO aotriton: getting build system dependencies for aotriton in /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0
+20:20:42 INFO aotriton: starting build of build-system dependency aotriton (0.11.2b0) for toplevel dependency torch (2.10.0) for rocm-ubi9
+20:20:42 INFO aotriton: building rocm-ubi9 wheel for aotriton in /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0 writing to /mnt/wheels-repo/build
+20:20:42 INFO aotriton: aotriton: found build_wheel override
+20:20:42 INFO aotriton: [1/2] aotriton: cmake configure
+20:20:55 ERROR aotriton: command failed with exit code 1: /opt/app-root/lib64/python3.12/site-packages/fromager/run_network_isolation.sh cmake -DCMAKE_INSTALL_PREFIX=/mnt/work-dir/aotriton-0.11.2b0/aotriton-wheel/aotriton '-DAMDGPU_TARGETS=gfx90a;gfx942;gfx950' -DCMAKE_BUILD_TYPE=Release -DCMAKE_MODULE_PATH=/usr/lib64/llvm-triton-57088512/lib/cmake/llvm/ -DAOTRITON_USE_TORCH=OFF -GNinja -S /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0 -B /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build '-DAOTRITON_TARGET_ARCH=gfx90a;gfx942;gfx950'
+aotriton: -- The CXX compiler identification is GNU 11.5.0
+aotriton: -- The C compiler identification is GNU 11.5.0
+aotriton: -- Found Python3: /mnt/work-dir/aotriton-0.11.2b0/build-3.12.9/bin/python3.12 (found suitable version "3.12.9", minimum required is "3.10") found components: Interpreter
+aotriton: -- pybind11 v2.11.1 
+aotriton: VENV_DIR /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build/venv
+aotriton: VENV_SITE /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build/venv/lib64/python3.12/site-packages
+aotriton: WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7497f2720>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+aotriton: WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7498256a0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+aotriton: WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7493b61b0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+aotriton: WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7493b6720>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+aotriton: WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x78f7493b6900>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/filelock/
+aotriton: ERROR: Could not find a version that satisfies the requirement filelock (from versions: none)
+aotriton: ERROR: No matching distribution found for filelock
+aotriton: AOTRITON_COMPILER /mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/compile.py
+aotriton: '/usr/bin/cmake' '-E' 'env' 'VIRTUAL_ENV=/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build/venv' 'AOTRITON_ENABLE_FP32=1' '/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build/venv/bin/python' '-X' 'utf8' '-m' 'v3python.generate' '--target_gpus' 'gfx90a_mod0' 'gfx942_mod0' 'gfx950_mod0' '--build_dir' '/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/build/v3src'
+aotriton: Traceback (most recent call last):
+aotriton:   File "<frozen runpy>", line 198, in _run_module_as_main
+aotriton:   File "<frozen runpy>", line 88, in _run_code
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/generate.py", line 5, in <module>
+aotriton:     from .rules import (
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/rules/__init__.py", line 5, in <module>
+aotriton:     from .flash import (
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/rules/flash/__init__.py", line 4, in <module>
+aotriton:     from v3python.op import (
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/op/__init__.py", line 4, in <module>
+aotriton:     from .operator import Operator
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/op/operator.py", line 4, in <module>
+aotriton:     from ..base import (
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/base/__init__.py", line 5, in <module>
+aotriton:     from . import typed_choice
+aotriton:   File "/mnt/work-dir/aotriton-0.11.2b0/aotriton-0.11.2b0/v3python/base/typed_choice.py", line 6, in <module>
+aotriton:     import numpy as np
+aotriton: ModuleNotFoundError: No module named 'numpy'
+aotriton: CMake Error at v3src/CMakeLists.txt:83 (execute_process):
+aotriton:   execute_process failed command indexes:
+aotriton: 
+aotriton:     1: "Child return code: 1"
+aotriton: 
+aotriton: -- Configuring incomplete, errors occurred!
+ 83%|...| 113/136 [02:49<00:34,  1.50s/pkg]
+20:20:55 ERROR torch: could not handle build-system dependency aotriton (0.11.2b0) for toplevel dependency torch (2.10.0) because Command '['/opt/app-root/lib64/python3.12/site-packages/fromager/run_network_isolation.sh', 'cmake', ...]' returned non-zero exit status 1.
+[bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+Shutting down nginx
+
+Uploading artifacts for failed job
+Uploading artifacts...
+Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=9d31aa9a65dac958-IAD id=13247941581 responseStatus=201 Created token=[REDACTED]
+
+Cleaning up project directory and file based variables
+ERROR: Job failed: exit code 1
