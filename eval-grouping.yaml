@@ -1,0 +1,195 @@
+name: pipeline-grouping
+description: >-
+  Evaluate the pipeline-grouping skill against realistic CI/CD failure
+  snapshots. Tests error similarity grouping, boundary crossing, cascade
+  detection, and Jira dedup handling.
+
+execution:
+  mode: case
+  skill: pipeline-grouping
+  arguments: ""
+  timeout: 600
+
+runner:
+  type: claude-code
+  plugin_dirs:
+    - .
+
+models:
+  skill: claude-sonnet-4-6
+  judge: claude-opus-4-6
+
+dataset:
+  path: eval/cases-grouping
+  schema: |
+    Each case directory contains:
+    - input.yaml: The 'prompt' field is the skill invocation command
+      (always "/pipeline-grouping").
+    - annotations.yaml: Expected outcomes (expected_group_count, expected_jobs
+      as comma-separated IDs, expected_grouping array of {root_cause, job_ids}).
+    - _context/grouping-context.json: Job manifest table, expected job IDs,
+      and Jira URL.
+    - jobs/<id>-<name>/errors.txt: Preprocessed error files per job. May start
+      with "[Fallback:" if no error patterns matched (raw last 200 log lines).
+    - recent-tickets.json: Open Jira tickets for dedup (may be empty []).
+
+outputs:
+  - path: output
+    schema: |
+      The skill writes to the workspace root (collected into output/):
+      - grouping.json: Final grouping with "groups" array. Each group has
+        id (NN-slug format), summary (root cause description), job_ids
+        (sorted numeric strings), error_messages (representative errors).
+      - dedup-results.json: (conditional) Written only when groups match
+        existing Jira tickets from recent-tickets.json.
+
+traces:
+  stdout: true
+  stderr: true
+  events: true
+  metrics: true
+
+judges:
+  - name: valid_json
+    description: |
+      Check that grouping.json exists and is valid JSON with the
+      expected top-level structure.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      gf = [k for k in files if k.endswith("grouping.json")]
+      if not gf:
+          return (False, "grouping.json is empty or missing")
+      try:
+          data = json.loads(files[gf[0]])
+      except json.JSONDecodeError as e:
+          return (False, f"Invalid JSON: {e}")
+      if "groups" not in data:
+          return (False, "Missing 'groups' key")
+      if not isinstance(data["groups"], list):
+          return (False, "'groups' is not a list")
+      return (True, f"Valid JSON with {len(data['groups'])} groups")
+
+  - name: group_structure
+    description: |
+      Validate that each group in grouping.json has the required fields:
+      id (string), summary (string), job_ids (list), error_messages (list).
+    check: |
+      import json
+      files = outputs.get("files", {})
+      gf = [k for k in files if k.endswith("grouping.json")]
+      if not gf:
+          return (False, "grouping.json is empty or missing")
+      try:
+          data = json.loads(files[gf[0]])
+      except json.JSONDecodeError as e:
+          return (False, f"Invalid JSON: {e}")
+      groups = data.get("groups", [])
+      if not groups:
+          return (False, "No groups found")
+      required = {"id", "summary", "job_ids", "error_messages"}
+      for i, g in enumerate(groups):
+          if not isinstance(g, dict):
+              return (False, f"Group {i} is not an object")
+          missing = required - set(g.keys())
+          if missing:
+              return (False, f"Group {i} missing fields: {', '.join(missing)}")
+          if not isinstance(g.get("id"), str):
+              return (False, f"Group {i} id is not a string")
+          if not isinstance(g.get("summary"), str) or not g["summary"].strip():
+              return (False, f"Group {i} has empty or invalid summary")
+          if not isinstance(g.get("job_ids"), list) or not g["job_ids"]:
+              return (False, f"Group {i} has empty or invalid job_ids")
+          if not isinstance(g.get("error_messages"), list):
+              return (False, f"Group {i} error_messages is not a list")
+      return (True, f"All {len(groups)} groups have valid structure")
+
+  - name: all_jobs_assigned
+    description: |
+      Check that every expected job ID appears in exactly one group.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      ann = outputs.get("annotations", {})
+      gf = [k for k in files if k.endswith("grouping.json")]
+      if not gf:
+          return (False, "grouping.json is empty or missing")
+      data = json.loads(files[gf[0]])
+      assigned = []
+      for g in data.get("groups", []):
+          assigned.extend(str(j) for j in g.get("job_ids", []))
+      expected_raw = ann.get("expected_jobs", "")
+      if not expected_raw:
+          return (True, f"No expected_jobs annotation; {len(assigned)} jobs assigned")
+      expected = set(str(j).strip() for j in str(expected_raw).split(","))
+      assigned_set = set(assigned)
+      missing = expected - assigned_set
+      extra = assigned_set - expected
+      if missing:
+          return (False, f"Unassigned jobs: {', '.join(sorted(missing))}")
+      if extra:
+          return (False, f"Unexpected jobs: {', '.join(sorted(extra))}")
+      return (True, f"All {len(expected)} jobs correctly assigned")
+
+  - name: no_duplicate_jobs
+    description: |
+      Check that no job ID appears in more than one group.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      gf = [k for k in files if k.endswith("grouping.json")]
+      if not gf:
+          return (False, "grouping.json is empty or missing")
+      data = json.loads(files[gf[0]])
+      seen = {}
+      for g in data.get("groups", []):
+          for j in g.get("job_ids", []):
+              job_id = str(j)
+              if job_id in seen:
+                  return (False, f"Job {job_id} in both '{seen[job_id]}' and '{g['id']}'")
+              seen[job_id] = g["id"]
+      return (True, f"No duplicates across {len(seen)} job assignments")
+
+  - name: group_count
+    description: |
+      Check that the number of groups matches the expected count from
+      annotations (with ±1 tolerance for borderline cases).
+    check: |
+      import json
+      files = outputs.get("files", {})
+      ann = outputs.get("annotations", {})
+      gf = [k for k in files if k.endswith("grouping.json")]
+      if not gf:
+          return (False, "grouping.json is empty or missing")
+      data = json.loads(files[gf[0]])
+      actual = len(data.get("groups", []))
+      expected = ann.get("expected_group_count")
+      if expected is None:
+          return (True, f"{actual} groups (no expected count)")
+      expected = int(expected)
+      if actual == expected:
+          return (True, f"Exact match: {actual} groups")
+      if abs(actual - expected) <= 1:
+          return (True, f"{actual} groups (expected {expected}, within tolerance)")
+      return (False, f"{actual} groups but expected {expected}")
+
+  - name: grouping_quality
+    description: |
+      LLM judge evaluating overall quality of the grouping decisions.
+      Scores 1-5 based on whether related errors are grouped together,
+      unrelated errors are separated, and summaries are clear.
+    prompt_file: eval/prompts/grouping-quality-judge.md
+
+thresholds:
+  valid_json:
+    min_pass_rate: 1.0
+  group_structure:
+    min_pass_rate: 1.0
+  all_jobs_assigned:
+    min_pass_rate: 1.0
+  no_duplicate_jobs:
+    min_pass_rate: 1.0
+  group_count:
+    min_pass_rate: 0.8
+  grouping_quality:
+    min_mean: 3.5

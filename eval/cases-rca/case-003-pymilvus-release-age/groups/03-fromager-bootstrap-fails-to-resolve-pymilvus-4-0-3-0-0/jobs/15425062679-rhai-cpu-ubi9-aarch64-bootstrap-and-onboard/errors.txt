@@ -1,0 +1,89 @@
+L30978: 08:39:35 INFO ldap3-2.9.1: did not find wheel for 2.9.1 in https://gitlab.com/api/v4/projects/84168527/packages/pypi/simple/
+L30979: 08:39:35 INFO ldap3-2.9.1: downloading source for ldap3
+L30980: 08:39:35 INFO ldap3-2.9.1: saved /mnt/sdists-repo/downloads/ldap3-2.9.1.tar.gz
+L30981: 08:39:35 INFO ldap3-2.9.1: preparing source for ldap3 from /mnt/sdists-repo/downloads/ldap3-2.9.1.tar.gz
+L30982: 08:39:35 INFO ldap3-2.9.1: prepared source for ldap3 at /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30983: 08:39:35 INFO ldap3-2.9.1: created build environment in /mnt/work-dir/ldap3-2.9.1/build-3.12.9
+L30984: 08:39:35 INFO ldap3-2.9.1: getting build system dependencies for ldap3 in /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30985: 08:39:35 INFO setuptools: resolve for build-system requirement
+L30986: 
+L30987:  90%|âââââââââââââââââââââââââââââââ   | 4114/4596 [2:14:48<01:52,  4.30pkg/s]08:39:35 INFO ldap3-2.9.1: installed dependencies {<Requirement('setuptools>=40.8.0')>} into build environment in /mnt/work-dir/ldap3-2.9.1/build-3.12.9
+L30988: 08:39:35 INFO ldap3-2.9.1: getting build backend dependencies for ldap3 in /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30989: 08:39:35 INFO ldap3-2.9.1: getting build sdist dependencies for ldap3 in /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30990: 08:39:35 INFO ldap3-2.9.1: looking for build sdist dependencies in /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30991: 08:39:36 INFO ldap3-2.9.1: building cpu-ubi9 source distribution for ldap3 in /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30992: 08:39:36 INFO ldap3-2.9.1: built source distribution /mnt/sdists-repo/builds/ldap3-2.9.1.tar.gz
+L30993: 08:39:36 INFO ldap3-2.9.1: starting post_bootstrap hooks for ldap3==2.9.1, sdist: /mnt/sdists-repo/builds/ldap3-2.9.1.tar.gz, wheel_filename: None
+L30994: 08:39:36 INFO ldap3-2.9.1: ldap3: sdist filename 'ldap3-2.9.1.tar.gz' has expected name 'ldap3' and version 2.9.1
+L30995: 08:39:36 INFO ldap3-2.9.1: getting install requirements for ldap3 from sdist in /mnt/work-dir/ldap3-2.9.1/ldap3-2.9.1
+L30996: 08:39:36 INFO ldap3-2.9.1: adding ('ldap3', '2.9.1') to build order
+L30997: 08:39:36 INFO pyasn1: resolve for install requirement
+L30998: 
+L30999:  90%|âââââââââââââââââââââââââââââââ   | 4116/4597 [2:14:49<02:21,  3.40pkg/s]08:39:36 INFO langchain-milvus-0.4.0: new toplevel dependency langchain-milvus resolves to 0.4.0
+L31000: 08:39:36 INFO langchain-milvus-0.4.0: preparing source
+L31001: 08:39:36 INFO langchain-milvus-0.4.0: looking for existing wheel for version 0.4.0 with build tag (2, '') in /mnt/wheels-repo/build
+L31002: 08:39:36 INFO langchain-milvus-0.4.0: looking for existing wheel for version 0.4.0 with build tag (2, '') in /mnt/wheels-repo/downloads
+L31003: 08:39:36 INFO langchain-milvus-0.4.0: checking if wheel was already uploaded to https://gitlab.com/api/v4/projects/84168527/packages/pypi/simple/
+L31004: 08:39:36 INFO langchain-milvus-0.4.0: did not find wheel for 0.4.0 in https://gitlab.com/api/v4/projects/84168527/packages/pypi/simple/
+L31005: 08:39:36 INFO langchain-milvus-0.4.0: downloading source for langchain-milvus
+L31006: 08:39:36 INFO langchain-milvus-0.4.0: saved /mnt/sdists-repo/downloads/langchain_milvus-0.4.0.tar.gz
+L31007: 08:39:36 INFO langchain-milvus-0.4.0: preparing source for langchain-milvus from /mnt/sdists-repo/downloads/langchain_milvus-0.4.0.tar.gz
+L31008: 08:39:36 INFO langchain-milvus-0.4.0: prepared source for langchain-milvus at /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31009: 08:39:36 INFO langchain-milvus-0.4.0: created build environment in /mnt/work-dir/langchain_milvus-0.4.0/build-3.12.9
+L31010: 08:39:36 INFO langchain-milvus-0.4.0: getting build system dependencies for langchain-milvus in /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31011: 08:39:36 INFO poetry-core: resolve for build-system requirement
+L31012: 
+L31013:  90%|âââââââââââââââââââââââââââââââ   | 4117/4598 [2:14:49<02:30,  3.19pkg/s]08:39:37 INFO langchain-milvus-0.4.0: installed dependencies {<Requirement('poetry-core>=1.0.0')>} into build environment in /mnt/work-dir/langchain_milvus-0.4.0/build-3.12.9
+L31014: 08:39:37 INFO langchain-milvus-0.4.0: getting build backend dependencies for langchain-milvus in /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31015: 08:39:37 INFO langchain-milvus-0.4.0: getting build sdist dependencies for langchain-milvus in /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31016: 08:39:37 INFO langchain-milvus-0.4.0: looking for build sdist dependencies in /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31017: 08:39:37 INFO langchain-milvus-0.4.0: building cpu-ubi9 source distribution for langchain-milvus in /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31018: 08:39:37 INFO langchain-milvus-0.4.0: built source distribution /mnt/sdists-repo/builds/langchain-milvus-0.4.0.tar.gz
+L31019: 08:39:37 INFO langchain-milvus-0.4.0: starting post_bootstrap hooks for langchain-milvus==0.4.0, sdist: /mnt/sdists-repo/builds/langchain-milvus-0.4.0.tar.gz, wheel_filename: None
+L31020: 08:39:37 INFO langchain-milvus-0.4.0: langchain-milvus: sdist filename 'langchain-milvus-0.4.0.tar.gz' has expected name 'langchain-milvus' and version 0.4.0
+L31021: 08:39:37 INFO langchain-milvus-0.4.0: getting install requirements for langchain-milvus from sdist in /mnt/work-dir/langchain_milvus-0.4.0/langchain_milvus-0.4.0
+L31022: 08:39:37 INFO langchain-milvus-0.4.0: adding ('langchain-milvus', '0.4.0') to build order
+L31023: 08:39:37 INFO pymilvus: resolve for install requirement
+L31024: 08:39:37 INFO milvus-lite: resolve for install requirement
+L31025: 08:39:37 INFO langchain-core: resolve for install requirement
+L31026: 
+L31027:  89%|âââââââââââââââââââââââââââââââ   | 4117/4601 [2:14:50<15:51,  1.97s/pkg]
+L31028: 08:39:37 ERROR Unable to resolve requirement specifier pymilvus<4.0,>=3.0.0 with constraint None using PyPI resolver (searching at https://pypi.org/simple): found no match for pymilvus<4.0,>=3.0.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions because found no match for pymilvus<4.0,>=3.0.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions
+L31029: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L31030: [nginx_server.sh:12] local outdir=/mnt
+L31031: [nginx_server.sh:15] pgrep nginx
+L31032: [nginx_server.sh:16] echo 'Shutting down nginx'
+L31033: [nginx_server.sh:17] nginx -s quit
+L31034: Shutting down nginx
+L31035: [nginx_server.sh:17] pkill nginx
+L31036: Removing nginx configuration /etc/nginx/builder.conf
+L31037: [nginx_server.sh:21] '[' -f /etc/nginx/builder.conf ']'
+L31038: [nginx_server.sh:22] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+L31039: [nginx_server.sh:23] rm -f /etc/nginx/builder.conf
+L31040: 
+L31041: 
+L31042: Running after_script
+L31043: Running after script...
+L31044: $ set +x
+L31045: $ podman secret rm --ignore aipcc-builder-netrc
+L31046: de2876d09a82a69272758869a
+L31047: 
+L31048: 
+L31049: Uploading artifacts for failed job
+L31050: Uploading artifacts...
+L31051: /builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories 
+L31052: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories 
+L31053: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories 
+L31054: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: found 252 matching artifact files and directories 
+L31055: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories 
+L31056: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: found 3 matching artifact files and directories 
+L31057: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L31058: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories 
+L31059: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L31060: Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=a1e0a81b3990c095-IAD id=15425062679 responseStatus=201 Created token=71_NpavVj
+L31061: 
+L31062: 
+L31063: Cleaning up project directory and file based variables
+L31064: 
+L31065: ERROR: Job failed: exit code 1
+[Filtered: 31066 total lines -> 88 shown, 1 ERROR, 109 WARNING]

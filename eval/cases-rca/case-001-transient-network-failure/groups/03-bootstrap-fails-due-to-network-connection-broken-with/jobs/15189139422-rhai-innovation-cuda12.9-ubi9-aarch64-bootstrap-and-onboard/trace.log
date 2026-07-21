@@ -1,0 +1,103 @@
+[0KRunning with gitlab-runner 18.2.0 (c24769e8)[0;m
+[0K  on pe-runners uy9G8Mm6i, system ID: s_98523bec42a0[0;m
+[0K  feature flags: FF_SCRIPT_SECTIONS:true[0;m
+[0K[36;1mResolving secrets[0;m[0;m
+section_start:1783297400:prepare_executor
+[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2 ...[0;m
+[0KUsing effective pull policy of [always] for container registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2[0;m
+[0KAuthenticating with credentials from job payload (GitLab Registry)[0;m
+[0KPulling docker image registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2 ...[0;m
+[0KUsing docker image sha256:2ceb1c7c95295fdc08c5655b465b00a8be563340aeb02ce570367154f7ef6663 for registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2 with digest registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable@sha256:614076f3dbfc26c41945786d827d3ce77e1af7e8b3493064668826c6a6bf1a33 ...[0;m
+section_end:1783297407:prepare_executor
+[0Ksection_start:1783297407:prepare_script
+[0K[0K[36;1mPreparing environment[0;m[0;m
+[0KUsing effective pull policy of [always] for container sha256:48de677a455eacee8dd57887c2579efb8dbacfaaef9cb02e867dee54e4b0d1d4[0;m
+Running on runner-uy9g8mm6i-project-73796641-concurrent-0 via runner-uy9g8mm6i-aipcc-large-aarc-1783297310-7316e87f...
+section_end:1783297410:prepare_script
+[0Ksection_start:1783297410:get_sources
+[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mGitaly correlation ID: a16a75cccf0c2d85-IAD[0;m
+
+[... 5683 lines trimmed for eval fixture ...]
+
+00:30:08 INFO pydantic-2.13.4: starting post_bootstrap hooks for pydantic==2.13.4, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/pydantic-2.13.4-8-py3-none-any.whl
+00:30:08 INFO pydantic-2.13.4: pydantic: wheel filename 'pydantic-2.13.4-8-py3-none-any.whl' has expected name 'pydantic' and version 2.13.4
+00:30:08 INFO pydantic-2.13.4: getting installation dependencies from /mnt/wheels-repo/downloads/pydantic-2.13.4-8-py3-none-any.whl
+00:30:08 INFO pydantic-2.13.4: adding ('pydantic', '2.13.4') to build order
+00:30:08 INFO typing-inspection: resolve for install requirement
+00:30:08 INFO typing-extensions: resolve for install requirement
+00:30:08 INFO pydantic-core: resolve for install requirement
+00:30:08 INFO email-validator: resolve for install requirement
+00:30:08 INFO annotated-types: resolve for install requirement
+00:30:08 INFO typing-inspection-0.4.2: new install dependency typing-inspection>=0.4.2 resolves to 0.4.2
+00:30:08 INFO typing-inspection-0.4.2: preparing source
+00:30:08 INFO typing-inspection-0.4.2: looking for existing wheel for version 0.4.2 with build tag (8, '') in /mnt/wheels-repo/build
+00:30:08 INFO typing-inspection-0.4.2: looking for existing wheel for version 0.4.2 with build tag (8, '') in /mnt/wheels-repo/downloads
+00:30:08 INFO typing-inspection-0.4.2: checking if wheel was already uploaded to https://gitlab.com/api/v4/projects/83010518/packages/pypi/simple/
+00:30:08 INFO typing-inspection-0.4.2: has expected build tag (8, '')
+00:30:08 INFO typing-inspection-0.4.2: downloading pre-built wheel https://gitlab.com/api/v4/projects/83010518/packages/pypi/files/9408ba7c0701cd48020333f29bdc9cf5c3d021ca30e1d89f15fc78ad30430459/typing_inspection-0.4.2-8-py3-none-any.whl
+00:30:08 INFO typing-inspection-0.4.2: saved /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+00:30:08 INFO typing-inspection-0.4.2: saved wheel to /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+00:30:08 INFO typing-inspection-0.4.2: found built wheel on cache server
+00:30:08 INFO typing-inspection-0.4.2: extracted /mnt/work-dir/typing-inspection-0.4.2/build-backend-requirements.txt
+00:30:08 INFO typing-inspection-0.4.2: extracted /mnt/work-dir/typing-inspection-0.4.2/build-sdist-requirements.txt
+00:30:08 INFO typing-inspection-0.4.2: extracted /mnt/work-dir/typing-inspection-0.4.2/build-system-requirements.txt
+00:30:08 INFO typing-inspection-0.4.2: extracted build requirements from wheel into /mnt/work-dir/typing-inspection-0.4.2
+00:30:08 INFO typing-inspection-0.4.2: created build environment in /mnt/work-dir/typing-inspection-0.4.2/build-3.12.9
+00:30:08 INFO typing-inspection-0.4.2: getting build system dependencies for typing-inspection>=0.4.2 in /mnt/work-dir/typing-inspection-0.4.2/typing-inspection-0.4
+00:30:08 INFO typing-inspection-0.4.2: loading build system dependencies from /mnt/work-dir/typing-inspection-0.4.2/build-system-requirements.txt
+00:30:08 INFO hatchling: resolve for build-system requirement
+
+ 84%|ââââââââââââââââââââââââââââââââ      | 498/593 [02:10<00:22,  4.16pkg/s]00:30:08 INFO typing-inspection-0.4.2: installed dependencies {<Requirement('hatchling>=1.27.0')>} into build environment in /mnt/work-dir/typing-inspection-0.4.2/build-3.12.9
+00:30:08 INFO typing-inspection-0.4.2: getting build backend dependencies for typing-inspection>=0.4.2 in /mnt/work-dir/typing-inspection-0.4.2/typing-inspection-0.4
+00:30:08 INFO typing-inspection-0.4.2: loading build backend dependencies from /mnt/work-dir/typing-inspection-0.4.2/build-backend-requirements.txt
+00:30:08 INFO typing-inspection-0.4.2: getting build sdist dependencies for typing-inspection>=0.4.2 in /mnt/work-dir/typing-inspection-0.4.2/typing-inspection-0.4
+00:30:08 INFO typing-inspection-0.4.2: loading build sdist dependencies from /mnt/work-dir/typing-inspection-0.4.2/build-sdist-requirements.txt
+00:30:08 INFO typing-inspection-0.4.2: starting post_bootstrap hooks for typing-inspection==0.4.2, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+00:30:08 INFO typing-inspection-0.4.2: typing-inspection: wheel filename 'typing_inspection-0.4.2-8-py3-none-any.whl' has expected name 'typing-inspection' and version 0.4.2
+00:30:08 INFO typing-inspection-0.4.2: getting installation dependencies from /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+00:30:08 INFO typing-inspection-0.4.2: adding ('typing-inspection', '0.4.2') to build order
+00:30:08 INFO typing-extensions: resolve for install requirement
+
+ 84%|ââââââââââââââââââââââââââââââââ      | 499/594 [02:10<00:21,  4.50pkg/s]
+ 84%|ââââââââââââââââââââââââââââââââ      | 501/594 [02:10<00:24,  3.85pkg/s]
+00:30:08 ERROR ('Connection broken: IncompleteRead(1144989 bytes read, 344486 more expected)', IncompleteRead(1144989 bytes read, 344486 more expected))
+[[36mbootstrap_and_onboard.sh:1[0m] cleanup_nginx /mnt
+[[36mnginx_server.sh:12[0m] local outdir=/mnt
+[[36mnginx_server.sh:15[0m] pgrep nginx
+[[36mnginx_server.sh:16[0m] echo 'Shutting down nginx'
+[[36mnginx_server.sh:17[0m] nginx -s quit
+Shutting down nginx
+[[36mnginx_server.sh:17[0m] pkill nginx
+[[36mnginx_server.sh:21[0m] '[' -f /etc/nginx/builder.conf ']'
+[[36mnginx_server.sh:22[0m] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+[[36mnginx_server.sh:23[0m] rm -f /etc/nginx/builder.conf
+Removing nginx configuration /etc/nginx/builder.conf
+section_end:1783297811:step_script
+[0Ksection_start:1783297811:after_script
+[0K[0K[36;1mRunning after_script[0;m[0;m
+[32;1mRunning after script...[0;m
+[32;1m$ set +x[0;m
+[32;1m$ podman secret rm --ignore aipcc-builder-netrc[0;m
+ac01cfce163c38db016f6e949
+section_end:1783297811:after_script
+[0Ksection_start:1783297811:upload_artifacts_on_failure
+[0K[0K[36;1mUploading artifacts for failed job[0;m[0;m
+[32;1mUploading artifacts...[0;m
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: found 3 matching artifact files and directories[0;m 
+[0;33mWARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline)[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories[0;m 
+[0;33mWARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline)[0;m 
+Uploading artifacts as "archive" to coordinator... 201 Created[0;m  correlation_id[0;m=a16a7fdbf8c6ecd2-IAD id[0;m=15189139422 responseStatus[0;m=201 Created token[0;m=71_or_eP1
+section_end:1783297812:upload_artifacts_on_failure
+[0Ksection_start:1783297812:cleanup_file_variables
+[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1783297813:cleanup_file_variables
+[0K[31;1mERROR: Job failed: exit code 1
+[0;m

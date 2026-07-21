@@ -1,0 +1,17 @@
+{
+  "id": "15189139422",
+  "name": "rhai-innovation-cuda12.9-ubi9-aarch64-bootstrap-and-onboard",
+  "stage": "bootstrap",
+  "status": "failed",
+  "url": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/jobs/15189139422",
+  "duration": 418.927454,
+  "failure_reason": "script_failure",
+  "kind": "",
+  "allow_failure": false,
+  "retried": false,
+  "collection": "rhai-innovation",
+  "variant": "cuda12.9",
+  "os": "ubi9",
+  "architecture": "aarch64",
+  "action": "bootstrap-and-onboard"
+}

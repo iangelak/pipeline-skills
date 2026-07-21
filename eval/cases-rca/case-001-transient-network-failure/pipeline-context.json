@@ -1,0 +1,21 @@
+{
+  "pipeline": {
+    "id": 2653573062,
+    "url": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/pipelines/2653573062",
+    "project_path": "redhat/rhel-ai/rhai/pipeline",
+    "ref": "main",
+    "sha": "5711287ee6e8efcfed7b82d69c4d486d583f8cd9",
+    "status": "running",
+    "created_at": "2026-07-06T00:08:31.079Z",
+    "duration": null
+  },
+  "job_summary": {
+    "total": 250,
+    "failed": 34,
+    "succeeded": 126,
+    "skipped": 89,
+    "canceled": 0
+  },
+  "infra_failures": [],
+  "pipeline_incomplete": false
+}

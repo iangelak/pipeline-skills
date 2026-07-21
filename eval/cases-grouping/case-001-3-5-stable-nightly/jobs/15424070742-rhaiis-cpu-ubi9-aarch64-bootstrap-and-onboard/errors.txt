@@ -1,0 +1,89 @@
+L7019:  89%|ââââââââââââââââââââââââââââââââââ    | 730/821 [58:27<02:19,  1.54s/pkg]05:19:10 INFO huggingface-hub-0.36.2: installed dependencies {<Requirement('setuptools>=40.8.0')>} into build environment in /mnt/work-dir/huggingface_hub-0.36.2/build-3.12.9
+L7020: 05:19:10 INFO huggingface-hub-0.36.2: getting build backend dependencies for huggingface-hub<1.0,>=0.34.0 in /mnt/work-dir/huggingface_hub-0.36.2/huggingface_hub-0.36.2
+L7021: 05:19:11 INFO huggingface-hub-0.36.2: getting build sdist dependencies for huggingface-hub<1.0,>=0.34.0 in /mnt/work-dir/huggingface_hub-0.36.2/huggingface_hub-0.36.2
+L7022: 05:19:11 INFO huggingface-hub-0.36.2: looking for build sdist dependencies in /mnt/work-dir/huggingface_hub-0.36.2/huggingface_hub-0.36.2
+L7023: 05:19:11 INFO huggingface-hub-0.36.2: building cpu-ubi9 source distribution for huggingface-hub<1.0,>=0.34.0 in /mnt/work-dir/huggingface_hub-0.36.2/huggingface_hub-0.36.2
+L7024: 05:19:11 INFO huggingface-hub-0.36.2: built source distribution /mnt/sdists-repo/builds/huggingface-hub-0.36.2.tar.gz
+L7025: 05:19:11 INFO huggingface-hub-0.36.2: starting post_bootstrap hooks for huggingface-hub==0.36.2, sdist: /mnt/sdists-repo/builds/huggingface-hub-0.36.2.tar.gz, wheel_filename: None
+L7026: 05:19:11 INFO huggingface-hub-0.36.2: huggingface-hub: sdist filename 'huggingface-hub-0.36.2.tar.gz' has expected name 'huggingface-hub' and version 0.36.2
+L7027: 05:19:11 INFO huggingface-hub-0.36.2: getting install requirements for huggingface-hub<1.0,>=0.34.0 from sdist in /mnt/work-dir/huggingface_hub-0.36.2/huggingface_hub-0.36.2
+L7028: 05:19:11 INFO huggingface-hub-0.36.2: adding ('huggingface-hub', '0.36.2') to build order
+L7029: 05:19:11 INFO typing-extensions: resolve for install requirement
+L7030: 05:19:11 INFO tqdm: resolve for install requirement
+L7031: 05:19:11 INFO requests: resolve for install requirement
+L7032: 05:19:11 INFO pyyaml: resolve for install requirement
+L7033: 05:19:11 INFO packaging: resolve for install requirement
+L7034: 05:19:11 INFO hf-xet: resolve for install requirement
+L7035: 05:19:11 INFO fsspec: resolve for install requirement
+L7036: 05:19:11 INFO filelock: resolve for install requirement
+L7037: 
+L7038:  88%|ââââââââââââââââââââââââââââââââââ    | 731/829 [58:28<02:25,  1.49s/pkg]
+L7039:  89%|ââââââââââââââââââââââââââââââââââ    | 739/829 [58:28<00:56,  1.61pkg/s]
+L7040:  90%|ââââââââââââââââââââââââââââââââââ    | 743/829 [58:28<00:38,  2.24pkg/s]05:19:12 INFO watchfiles-1.2.0: new install dependency watchfiles resolves to 1.2.0
+L7041: 05:19:12 INFO watchfiles-1.2.0: preparing source
+L7042: 05:19:12 INFO watchfiles-1.2.0: looking for existing wheel for version 1.2.0 with build tag (2, '') in /mnt/wheels-repo/build
+L7043: 05:19:12 INFO watchfiles-1.2.0: looking for existing wheel for version 1.2.0 with build tag (2, '') in /mnt/wheels-repo/downloads
+L7044: 05:19:12 INFO watchfiles-1.2.0: checking if wheel was already uploaded to https://gitlab.com/api/v4/projects/84168618/packages/pypi/simple/
+L7045: 05:19:12 INFO watchfiles-1.2.0: did not find wheel for 1.2.0 in https://gitlab.com/api/v4/projects/84168618/packages/pypi/simple/
+L7046: 05:19:12 INFO watchfiles-1.2.0: downloading source for watchfiles
+L7047: 05:19:12 INFO watchfiles-1.2.0: saved /mnt/sdists-repo/downloads/watchfiles-1.2.0.tar.gz
+L7048: 05:19:12 INFO watchfiles-1.2.0: preparing source for watchfiles from /mnt/sdists-repo/downloads/watchfiles-1.2.0.tar.gz
+L7049: 05:19:12 INFO watchfiles-1.2.0: updating vendored rust dependencies in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7050: 05:19:13 INFO watchfiles-1.2.0: prepared source for watchfiles at /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7051: 05:19:13 INFO watchfiles-1.2.0: created build environment in /mnt/work-dir/watchfiles-1.2.0/build-3.12.9
+L7052: 05:19:13 INFO watchfiles-1.2.0: getting build system dependencies for watchfiles in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7053: 05:19:13 INFO maturin: resolve for build-system requirement
+L7054: 
+L7055:  90%|âââââââââââââââââââââââââââââââââââ   | 747/830 [58:30<00:34,  2.41pkg/s]05:19:13 INFO watchfiles-1.2.0: installed dependencies {<Requirement('maturin<2,>=0.14.16')>} into build environment in /mnt/work-dir/watchfiles-1.2.0/build-3.12.9
+L7056: 05:19:13 INFO watchfiles-1.2.0: getting build backend dependencies for watchfiles in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7057: 05:19:13 INFO watchfiles-1.2.0: getting build sdist dependencies for watchfiles in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7058: 05:19:13 INFO watchfiles-1.2.0: looking for build sdist dependencies in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7059: 05:19:13 INFO watchfiles-1.2.0: building cpu-ubi9 source distribution for watchfiles in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7060: 05:19:16 INFO watchfiles-1.2.0: built source distribution /mnt/sdists-repo/builds/watchfiles-1.2.0.tar.gz
+L7061: 05:19:16 INFO watchfiles-1.2.0: starting post_bootstrap hooks for watchfiles==1.2.0, sdist: /mnt/sdists-repo/builds/watchfiles-1.2.0.tar.gz, wheel_filename: None
+L7062: 05:19:16 INFO watchfiles-1.2.0: watchfiles: sdist filename 'watchfiles-1.2.0.tar.gz' has expected name 'watchfiles' and version 1.2.0
+L7063: 05:19:16 INFO watchfiles-1.2.0: getting install requirements for watchfiles from sdist in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7064: 05:19:16 INFO watchfiles-1.2.0: adding ('watchfiles', '1.2.0') to build order
+L7065: 05:19:16 INFO anyio: resolve for install requirement
+L7066: 
+L7067:  90%|âââââââââââââââââââââââââââââââââââ   | 750/831 [58:33<00:48,  1.66pkg/s]
+L7068:  90%|âââââââââââââââââââââââââââââââââââ   | 750/831 [58:33<06:19,  4.69s/pkg]
+L7069: 05:19:16 ERROR Unable to resolve requirement specifier transformers>=5.6.0 with constraint transformers<5 using PyPI resolver (searching at https://pypi.org/simple): found no match for transformers>=5.6.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions because found no match for transformers>=5.6.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions
+L7070: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L7071: [nginx_server.sh:12] local outdir=/mnt
+L7072: [nginx_server.sh:15] pgrep nginx
+L7073: [nginx_server.sh:16] echo 'Shutting down nginx'
+L7074: [nginx_server.sh:17] nginx -s quit
+L7075: Shutting down nginx
+L7076: [nginx_server.sh:17] pkill nginx
+L7077: [nginx_server.sh:21] '[' -f /etc/nginx/builder.conf ']'
+L7078: [nginx_server.sh:22] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+L7079: [nginx_server.sh:23] rm -f /etc/nginx/builder.conf
+L7080: Removing nginx configuration /etc/nginx/builder.conf
+L7081: 
+L7082: 
+L7083: Running after_script
+L7084: Running after script...
+L7085: $ set +x
+L7086: $ podman secret rm --ignore aipcc-builder-netrc
+L7087: 0aa487770c909860ffc6c4738
+L7088: 
+L7089: 
+L7090: Uploading artifacts for failed job
+L7091: Uploading artifacts...
+L7092: /builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories 
+L7093: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories 
+L7094: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories 
+L7095: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: found 74 matching artifact files and directories 
+L7096: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories 
+L7097: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: found 3 matching artifact files and directories 
+L7098: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L7099: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories 
+L7100: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L7101: Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=a1df829e7e6a2a7e-CMH id=15424070742 responseStatus=201 Created token=71_EWVKXV
+L7102: 
+L7103: 
+L7104: Cleaning up project directory and file based variables
+L7105: 
+L7106: ERROR: Job failed: exit code 1
+[Filtered: 7107 total lines -> 88 shown, 1 ERROR, 31 WARNING]

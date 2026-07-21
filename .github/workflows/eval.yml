@@ -1,0 +1,42 @@
+name: Eval
+
+on:
+  workflow_dispatch:
+    inputs:
+      skill:
+        description: 'Skill to evaluate (blank = all)'
+        required: false
+        type: string
+      model:
+        description: 'Model for skill execution'
+        required: false
+        default: 'sonnet'
+        type: string
+      runs:
+        description: 'Number of eval runs per case'
+        required: false
+        default: '1'
+        type: string
+
+jobs:
+  eval-grouping:
+    if: inputs.skill == '' || inputs.skill == 'pipeline-grouping'
+    uses: ./.github/workflows/eval-skill.yml
+    with:
+      skill: pipeline-grouping
+      config: eval-grouping.yaml
+      model: ${{ inputs.model || 'sonnet' }}
+      runs: ${{ inputs.runs || '1' }}
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  eval-rca:
+    if: inputs.skill == '' || inputs.skill == 'pipeline-rca'
+    uses: ./.github/workflows/eval-skill.yml
+    with:
+      skill: pipeline-rca
+      config: eval-rca.yaml
+      model: ${{ inputs.model || 'sonnet' }}
+      runs: ${{ inputs.runs || '1' }}
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

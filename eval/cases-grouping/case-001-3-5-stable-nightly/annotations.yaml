@@ -1,0 +1,15 @@
+difficulty: medium
+source: "pipeline #2689294783, 3.5-stable, 2026-07-20"
+expected_group_count: 3
+expected_jobs: "15423642483,15423643434,15424070742,15424099959,15424929597,15425062679"
+expected_grouping:
+  - root_cause: "vllm version pins fall outside constraint range"
+    job_ids: ["15423642483", "15423643434"]
+  - root_cause: "transformers>=5.6.0 conflicts with transformers<5 constraint"
+    job_ids: ["15424070742", "15424099959"]
+  - root_cause: "pymilvus>=3.0.0 unresolvable (release-age cooldown / no sdist)"
+    job_ids: ["15424929597", "15425062679"]
+notes: |
+  Real artifacts from pipeline-failure-analyzer run against 3.5-stable nightly.
+  Subset of 6 jobs (2 per group) from the full 17-job failure. All three groups
+  are dependency resolution failures but with distinct root causes.

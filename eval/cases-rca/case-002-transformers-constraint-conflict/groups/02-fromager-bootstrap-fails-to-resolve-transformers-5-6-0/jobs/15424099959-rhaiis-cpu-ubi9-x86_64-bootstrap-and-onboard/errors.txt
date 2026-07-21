@@ -1,0 +1,19 @@
+L7166: 05:25:14 INFO watchfiles-1.2.0: building cpu-ubi9 source distribution for watchfiles in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7167: 05:25:16 INFO watchfiles-1.2.0: built source distribution /mnt/sdists-repo/builds/watchfiles-1.2.0.tar.gz
+L7168: 05:25:16 INFO watchfiles-1.2.0: starting post_bootstrap hooks for watchfiles==1.2.0, sdist: /mnt/sdists-repo/builds/watchfiles-1.2.0.tar.gz, wheel_filename: None
+L7169: 05:25:16 INFO watchfiles-1.2.0: watchfiles: sdist filename 'watchfiles-1.2.0.tar.gz' has expected name 'watchfiles' and version 1.2.0
+L7170: 05:25:16 INFO watchfiles-1.2.0: getting install requirements for watchfiles from sdist in /mnt/work-dir/watchfiles-1.2.0/watchfiles-1.2.0
+L7171: 05:25:16 INFO watchfiles-1.2.0: adding ('watchfiles', '1.2.0') to build order
+L7172: 05:25:16 INFO anyio: resolve for install requirement
+L7173: 
+L7174:  90%|âââââââââââââââââââââââââââââââââ   | 762/843 [1:00:17<00:37,  2.15pkg/s]
+L7175:  90%|âââââââââââââââââââââââââââââââââ   | 762/843 [1:00:17<06:24,  4.75s/pkg]
+L7176: 05:25:17 ERROR Unable to resolve requirement specifier transformers>=5.6.0 with constraint transformers<5 using PyPI resolver (searching at https://pypi.org/simple): found no match for transformers>=5.6.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions because found no match for transformers>=5.6.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions
+L7177: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L7178: [nginx_server.sh:12] local outdir=/mnt
+L7179: [nginx_server.sh:15] pgrep nginx
+L7180: Shutting down nginx
+
+L7212: 
+L7213: ERROR: Job failed: exit code 1
+[Filtered: 7214 total lines -> 88 shown, 1 ERROR, 32 WARNING]

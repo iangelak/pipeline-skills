@@ -1,0 +1,52 @@
+{
+  "group_id": "02-fromager-bootstrap-fails-to-resolve-transformers-5-6-0",
+  "title": "Stale transformers<5 constraint blocks vllm 0.24.0 bootstrap requiring transformers>=5.6.0",
+  "collections": ["rhaiis"],
+  "actions": ["bootstrap-and-onboard"],
+  "error_summary": "Fromager bootstrap fails: transformers>=5.6.0 (from vllm 0.24.0) is irreconcilable with constraint transformers<5 in rhaiis cpu-ubi9 constraints",
+  "suggested_resolution_summary": "Remove or update the transformers<5 constraint in collections/rhaiis/cpu-ubi9/constraints.txt to allow transformers>=5.6.0",
+  "has_resolution_file": true,
+  "confidence": "high",
+  "confidence_justification": "The error message directly names the conflicting specifier (transformers>=5.6.0) and constraint (transformers<5). The constraint file comment (AIPCC-9443) documents the original intent. The merge commit AIPCC-27609 updated vllm from 0.21.0 to 0.24.0 without updating the constraint. Both aarch64 and x86_64 jobs fail identically with the same error at the same resolution step. The earlier successful resolution of transformers>=4.38.0 (from xgrammar) to 4.57.6 confirms the constraint is active and the conflict is specifically with the vllm-originated specifier.",
+  "cascade": false,
+  "target_repo": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline",
+  "target_repo_reason": "The fix requires updating collections/rhaiis/cpu-ubi9/constraints.txt in the pipeline repository, where the stale transformers<5 constraint is defined.",
+  "group_consistency": "consistent",
+  "feedback_status": "included",
+  "references": [
+    {
+      "path": "collections/rhaiis/cpu-ubi9/constraints.txt",
+      "description": "Contains the transformers<5 constraint with AIPCC-9443 comment explaining its original purpose — confirmed this is the source of the blocking constraint"
+    },
+    {
+      "path": "collections/rhaiis/cpu-ubi9/requirements.txt",
+      "description": "Shows vllm==0.24.0+rhaiv.1 as the pinned version — confirmed the vllm version that introduced the incompatible transformers>=5.6.0 requirement"
+    },
+    {
+      "path": "collections/rhaiis/cpu-ubi9/constraints-rules.txt",
+      "description": "Maps to torch-2.11.0 constraints — verified that torch-level constraints do not include a transformers constraint"
+    },
+    {
+      "path": "wheels/builder/collections/torch-2.11.0/cpu-ubi9/constraints.txt",
+      "description": "Checked for transformers constraints at the torch collection level — none found, confirming the constraint is only in the pipeline repo"
+    },
+    {
+      "path": "wheels/builder/collections/global-constraints.txt",
+      "description": "Checked for global transformers constraints — only sentence-transformers<5.2.1 found, not transformers"
+    },
+    {
+      "path": "wheels/builder/overrides/settings/vllm.yaml",
+      "description": "Reviewed vllm build settings for dependency overrides — no transformers-related overrides found"
+    }
+  ],
+  "resources_used": {
+    "agent_docs": [],
+    "skills": [],
+    "tools": [
+      {
+        "name": "git log/diff on rhai-pipeline",
+        "description": "Used git log and diff on the pipeline repo clone to trace the AIPCC-27609 merge commit that updated vllm from 0.21.0 to 0.24.0 without updating constraints — confirmed the constraint-requirement mismatch was introduced by this specific commit"
+      }
+    ]
+  }
+}

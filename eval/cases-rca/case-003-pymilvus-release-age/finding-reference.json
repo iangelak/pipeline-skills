@@ -1,0 +1,38 @@
+{
+  "group_id": "03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0",
+  "title": "langchain-milvus 0.4.0 introduces unresolvable pymilvus>=3.0.0 dependency",
+  "collections": ["rhai"],
+  "actions": ["bootstrap-and-onboard"],
+  "error_summary": "Fromager cannot resolve pymilvus<4.0,>=3.0.0 (required by langchain-milvus 0.4.0): blocked by release-age cooldown on x86_64, no sdist available on aarch64",
+  "suggested_resolution_summary": "Constrain langchain-milvus<0.4 in requirements to stay on pymilvus 2.x series",
+  "has_resolution_file": true,
+  "confidence": "high",
+  "confidence_justification": "Error messages directly name the failing dependency (pymilvus<4.0,>=3.0.0) and the resolution mechanism (release-age cooldown on x86_64, no sdist on aarch64). PyPI metadata confirms langchain-milvus 0.4.0 introduced the pymilvus>=3.0.0 requirement (0.3.3 used pymilvus<3.0,>=2.6.0). pymilvus 3.0.0 is confirmed as wheel-only with no sdist. The error chain from langchain-milvus → pymilvus is directly visible in trace logs across both x86_64 and aarch64 jobs.",
+  "cascade": false,
+  "target_repo": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline",
+  "target_repo_reason": "The fix requires adding a version constraint to langchain-milvus in the requirements files under collections/rhai/*/requirements/team-notebooks-images.txt, which are in the pipeline repository.",
+  "group_consistency": "mixed",
+  "feedback_status": "included",
+  "references": [
+    {"path": "collections/rhai/cpu-ubi9/requirements/team-notebooks-images.txt", "description": "Contains the unpinned langchain-milvus requirement (line 85) that resolved to 0.4.0"},
+    {"path": "collections/rhai/cpu-ubi9/constraints.txt", "description": "Checked for pymilvus constraints — none present"},
+    {"path": "collections/rhai/cpu-ubi9/constraints-rules.txt", "description": "Checked for constraint rules affecting pymilvus — only torch-2.11.0 rule exists"},
+    {"path": "collections/ogx/cpu-ubi9/requirements.txt", "description": "Shows ogx collection has explicit pymilvus>=2.4.10 pins with platform markers — rhai collection lacks equivalent pins"},
+    {"path": "collections/rhai/cuda12.9-ubi9/requirements/team-notebooks-images.txt", "description": "Additional collection with the same unpinned langchain-milvus requirement"},
+    {"path": "collections/rhai/cuda13.0-ubi9/requirements/team-notebooks-images.txt", "description": "Additional collection with the same unpinned langchain-milvus requirement"},
+    {"path": "collections/rhai/rocm7.1-ubi9/requirements/team-notebooks-images.txt", "description": "Additional collection with the same unpinned langchain-milvus requirement"},
+    {"path": "collections/rhai/rocm7.14-ubi9/requirements/team-notebooks-images.txt", "description": "Additional collection with the same unpinned langchain-milvus requirement"},
+    {"path": "wheels/builder/README.md", "description": "Documents the 3-day release-age cooldown mechanism (FROMAGER_MIN_RELEASE_AGE=3) and bypass methods (exact version pin or min_release_age: 0 in settings YAML)"},
+    {"path": "wheels/builder/.gitlab-ci.yml", "description": "Confirms FROMAGER_MIN_RELEASE_AGE=3 environment variable setting for the builder"}
+  ],
+  "resources_used": {
+    "agent_docs": [
+      {"name": "troubleshooting/README.md", "description": "Consulted for debugging workflow and common error patterns — confirmed resolution failures fall under the 'Resolution' phase of the bootstrap sequence"}
+    ],
+    "skills": [],
+    "tools": [
+      {"name": "PyPI JSON API", "description": "Queried https://pypi.org/pypi/pymilvus/json and https://pypi.org/pypi/langchain-milvus/json to verify release dates, dependency requirements across versions, and sdist availability. Confirmed langchain-milvus 0.4.0 (released 2026-07-17) bumped pymilvus requirement from <3.0 to >=3.0.0, and that pymilvus 3.0.0 is wheel-only."},
+      {"name": "PyPI Simple Index", "description": "Queried https://pypi.org/simple/pymilvus/ to check for yanked versions and verify that only pymilvus 3.0.0 exists in the 3.x series (with no sdist)."}
+    ]
+  }
+}

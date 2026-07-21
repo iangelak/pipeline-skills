@@ -1,0 +1,10 @@
+difficulty: easy
+source: "pipeline #2689294783, 3.5-stable, 2026-07-20, group 02"
+confidence_expected: high
+has_resolution: true
+cascade: false
+group_consistency: consistent
+notes: |
+  Real artifacts. The transformers>=5.6.0 requirement from vllm 0.24.0 directly
+  conflicts with the transformers<5 constraint. Error message names both sides
+  of the conflict explicitly — straightforward high-confidence diagnosis.

@@ -1,0 +1,25 @@
+{
+  "group": {
+    "id": "03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0",
+    "name": "Fromager bootstrap fails to resolve pymilvus<4.0,>=3.0.0 dependency of langchain-milvus. On x86_64 candidates are rejected by release-age cooldown; on aarch64 no match found at all. Two additional jobs (s390x, ppc64le) in the same rhai-cpu-ubi9 collection had their logs truncated at the 4MB limit before the error was captured, but were at similar bootstrap progress and likely hit the same failure.",
+    "collections": [
+      "rhai"
+    ],
+    "actions": [
+      "bootstrap-and-onboard"
+    ],
+    "error_description": "Fromager bootstrap fails to resolve pymilvus<4.0,>=3.0.0 dependency of langchain-milvus. On x86_64 candidates are rejected by release-age cooldown; on aarch64 no match found at all. Two additional jobs (s390x, ppc64le) in the same rhai-cpu-ubi9 collection had their logs truncated at the 4MB limit before the error was captured, but were at similar bootstrap progress and likely hit the same failure.\n\nError messages:\n- Unable to resolve requirement specifier pymilvus<4.0,>=3.0.0 with constraint None using PyPI resolver (searching at https://pypi.org/simple): found 2 candidate(s) for pymilvus<4.0,>=3.0.0 but all were published within the last 3 days (release-age cooldown; oldest is 2 day(s) old)\n- Unable to resolve requirement specifier pymilvus<4.0,>=3.0.0 with constraint None using PyPI resolver (searching at https://pypi.org/simple): found no match for pymilvus<4.0,>=3.0.0 using PyPI resolver (searching at https://pypi.org/simple), searching for sdists, ignoring pre-release versions\n- Job log exceeded 4MB limit and was truncated before error could be captured (rhai-cpu-ubi9 s390x and ppc64le jobs at ~85% bootstrap progress)"
+  },
+  "pipeline": {
+    "project_path": "redhat/rhel-ai/rhai/pipeline",
+    "project_path_encoded": "redhat%2Frhel-ai%2Frhai%2Fpipeline",
+    "ref": "3.5-stable",
+    "sha": "e7ba1bc785bc14a20f4d511fc5b9fe5e751c6934",
+    "builder_project_path": "redhat/rhel-ai/wheels/builder"
+  },
+  "affected_jobs_table": "| Job ID | Job Name | Variant | Architecture | Stage | URL | Duration | Log Lines | Log Chars |\n|--------|----------|---------|-------------|-------|-----|----------|-----------|-----------|\n| 15424929597 | rhai-cpu-ubi9-x86_64-bootstrap-and-onboard | cpu | x86_64 | bootstrap | https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/jobs/15424929597 | 8634.88327s | 31063 | 4361663 |\n| 15425062679 | rhai-cpu-ubi9-aarch64-bootstrap-and-onboard | cpu | aarch64 | bootstrap | https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/jobs/15425062679 | 8344.526763s | 31066 | 4366424 |\n| 15425685479 | rhai-cpu-ubi9-s390x-bootstrap-and-onboard | cpu | s390x | bootstrap | https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/jobs/15425685479 | 12089.103555s | 24423 | 4296066 |\n| 15426044272 | rhai-cpu-ubi9-ppc64le-bootstrap-and-onboard | cpu | ppc64le | bootstrap | https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/jobs/15426044272 | 15045.451974s | 24375 | 4296468 |",
+  "file_paths_table": "| Job Name | Trace Log | Preprocessed Errors |\n|----------|-----------|---------------------|\n| rhai-cpu-ubi9-x86_64-bootstrap-and-onboard | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15424929597-rhai-cpu-ubi9-x86_64-bootstrap-and-onboard/trace.log | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15424929597-rhai-cpu-ubi9-x86_64-bootstrap-and-onboard/errors.txt |\n| rhai-cpu-ubi9-aarch64-bootstrap-and-onboard | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15425062679-rhai-cpu-ubi9-aarch64-bootstrap-and-onboard/trace.log | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15425062679-rhai-cpu-ubi9-aarch64-bootstrap-and-onboard/errors.txt |\n| rhai-cpu-ubi9-s390x-bootstrap-and-onboard | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15425685479-rhai-cpu-ubi9-s390x-bootstrap-and-onboard/trace.log | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15425685479-rhai-cpu-ubi9-s390x-bootstrap-and-onboard/errors.txt |\n| rhai-cpu-ubi9-ppc64le-bootstrap-and-onboard | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15426044272-rhai-cpu-ubi9-ppc64le-bootstrap-and-onboard/trace.log | /workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0/jobs/15426044272-rhai-cpu-ubi9-ppc64le-bootstrap-and-onboard/errors.txt |",
+  "dependency_versions": "Builder repository cloned at: /workspace/_repos/builder",
+  "repo_submodule_path": "/workspace/_repos/rhai-pipeline",
+  "group_dir": "/workspace/groups/03-fromager-bootstrap-fails-to-resolve-pymilvus-4-0-3-0-0"
+}

@@ -1,0 +1,89 @@
+L962:         # Handle .whl files
+L963:         location ~* \.whl$ {
+L964:             root /mnt/wheels-repo;
+L965:             add_header Content-Type application/octet-stream;
+L966:         }
+L967:     }
+L968: }'
+L969: [nginx_server.sh:80] echo 'Starting nginx web server on port 8080 serving /mnt/wheels-repo'
+L970: [nginx_server.sh:81] nginx -c /etc/nginx/builder.conf
+L971: Starting nginx web server on port 8080 serving /mnt/wheels-repo
+L972: [nginx_server.sh:84] sleep 2
+L973: [nginx_server.sh:87] pgrep nginx
+L974: Nginx started successfully
+L975: [nginx_server.sh:91] echo 'Nginx started successfully'
+L976: [bootstrap_and_onboard.sh:142] SECURITY_CONSTRAINTS_ARGS=
+L977: [bootstrap_and_onboard.sh:143] '[' -n '' ']'
+L978: [bootstrap_and_onboard.sh:151] fromager --constraints-file /mnt/computed-constraints.txt --error-log-file=/mnt/errors.log --log-file=/mnt/bootstrap.log --sdists-repo=/mnt/sdists-repo --wheels-repo=/mnt/wheels-repo --work-dir=/mnt/work-dir --build-wheel-server-url=http://localhost:8080/simple/ bootstrap --sdist-only --skip-constraints --cache-wheel-server-url=https://gitlab.com/api/v4/projects/84168593/packages/pypi/simple/ -r /mnt/computed-requirements.txt
+L979: 03:20:01 INFO logging debug information to /mnt/bootstrap.log
+L980: 03:20:01 INFO logging errors to /mnt/errors.log
+L981: 03:20:01 INFO primary settings file: overrides/settings.yaml
+L982: 03:20:01 INFO per-package settings dir: overrides/settings
+L983: 03:20:01 INFO variant: spyre-ubi9
+L984: 03:20:01 INFO patches dir: overrides/patches
+L985: 03:20:01 INFO maximum concurrent jobs: None
+L986: 03:20:01 INFO constraints files: /mnt/computed-constraints.txt
+L987: 03:20:01 INFO network isolation: True
+L988: 03:20:01 INFO external build wheel server: http://localhost:8080/simple/
+L989: 03:20:21 INFO loading settings from /work/overrides/settings.yaml
+L990: 03:20:21 INFO loading constraints from /mnt/computed-constraints.txt
+L991: 03:20:21 INFO cache wheel server url: https://gitlab.com/api/v4/projects/84168593/packages/pypi/simple/
+L992: 03:20:21 INFO ignoring toplevel dependency sendnn-inference==2.1.2; platform_machine == "ppc64le" because of its marker expression
+L993: 03:20:21 INFO bootstrapping 'spyre-ubi9' variant of [<Requirement('pip')>, <Requirement('setuptools')>, <Requirement('torch')>, <Requirement('torchvision')>, <Requirement('torchaudio')>, <Requirement('vllm[tensorizer]==0.20.1+rhaiv.1.spyre')>, <Requirement('sendnn-inference==2.1.4; platform_machine == "s390x" or platform_machine == "x86_64"')>, <Requirement('triton; platform_machine == "x86_64"')>, <Requirement('intel-openmp; platform_machine == "x86_64"')>, <Requirement('intel_cmplr_lib_ur; platform_machine == "x86_64"')>, <Requirement('torch-sendnn==1.2.3')>, <Requirement('ibm-fms')>, <Requirement('depyf')>, <Requirement('timm>=1.0.17')>, <Requirement('torchao')>, <Requirement('flash-linear-attention')>, <Requirement('pytest-asyncio')>, <Requirement('hf-xet')>, <Requirement('opentelemetry-exporter-prometheus; platform_machine != "s390x"')>, <Requirement('setuptools>=80.10.2')>]
+L994: 03:20:21 INFO no previous bootstrap data
+L995: 03:20:21 INFO sdist-only (fast mode), getting metadata from sdists
+L996: 03:20:21 INFO treating ['intel-cmplr-lib-ur', 'intel-openmp', 'tensorboard-data-server', 'torch-nnpa', 'torch-sendnn'] as pre-built wheels
+L997: 
+L998:   0%|                                                 | 0/40 [00:00<?, ?pkg/s]03:20:21 INFO recording bootstrap stack state to /mnt/work-dir/bootstrap-stack.json
+L999: 03:20:21 INFO resolving and bootstrapping top-level dependencies
+L1000: 03:20:21 INFO pip: pip resolves to 26.1.2
+L1001: 03:20:21 INFO setuptools: setuptools resolves to 83.0.0
+L1002: 03:20:21 INFO torch: torch: found get_resolver_provider override
+L1003: 03:20:21 INFO torch: torch: override method get_resolver_provider returned <fromager.resolver.PyPIProvider object at 0x76749ac9f110>
+L1004: 03:20:21 INFO torch: torch resolves to 2.11.0
+L1005: 03:20:21 INFO torchvision: torchvision resolves to 0.26.0
+L1006: 03:20:21 INFO torchaudio: torchaudio resolves to 2.11.0
+L1007: 03:20:21 INFO vllm: vllm: found get_resolver_provider override
+L1008: 03:20:21 INFO vllm: vllm: override method get_resolver_provider returned <fromager.resolver.GitLabTagProvider object at 0x76749acae210>
+L1009: 03:20:21 INFO vllm: cooldown bypassed as the top-level requirement uses == pin
+L1010: 
+L1011:   0%|                                                 | 0/40 [00:05<?, ?pkg/s]
+L1012: 03:20:27 ERROR vllm: Unable to resolve requirement specifier vllm[tensorizer]==0.20.1+rhaiv.1.spyre with constraint vllm<0.25.0,>=0.24.0 using GitLab tag resolver (project: https://gitlab.com/redhat/rhel-ai/core/mirrors/github/neuralmagic/nm-vllm-ent): found no match for vllm[tensorizer]==0.20.1+rhaiv.1.spyre using GitLab tag resolver (project: https://gitlab.com/redhat/rhel-ai/core/mirrors/github/neuralmagic/nm-vllm-ent) because found no match for vllm[tensorizer]==0.20.1+rhaiv.1.spyre using GitLab tag resolver (project: https://gitlab.com/redhat/rhel-ai/core/mirrors/github/neuralmagic/nm-vllm-ent)
+L1013: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L1014: [nginx_server.sh:12] local outdir=/mnt
+L1015: [nginx_server.sh:15] pgrep nginx
+L1016: Shutting down nginx
+L1017: [nginx_server.sh:16] echo 'Shutting down nginx'
+L1018: [nginx_server.sh:17] nginx -s quit
+L1019: [nginx_server.sh:17] pkill nginx
+L1020: Removing nginx configuration /etc/nginx/builder.conf
+L1021: [nginx_server.sh:21] '[' -f /etc/nginx/builder.conf ']'
+L1022: [nginx_server.sh:22] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+L1023: [nginx_server.sh:23] rm -f /etc/nginx/builder.conf
+L1024: 
+L1025: 
+L1026: Running after_script
+L1027: Running after script...
+L1028: $ set +x
+L1029: $ podman secret rm --ignore aipcc-builder-netrc
+L1030: 4811e2df982cd8a071e6d7f3a
+L1031: 
+L1032: 
+L1033: Uploading artifacts for failed job
+L1034: Uploading artifacts...
+L1035: /builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories 
+L1036: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories 
+L1037: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories 
+L1038: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1039: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories 
+L1040: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1041: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1042: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories 
+L1043: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1044: Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=a1ded49cdd2a68f4-IAD id=15423642483 responseStatus=201 Created token=71__FNzxz
+L1045: 
+L1046: 
+L1047: Cleaning up project directory and file based variables
+L1048: 
+L1049: ERROR: Job failed: exit code 1
+[Filtered: 1050 total lines -> 88 shown, 1 ERROR, 0 WARNING]

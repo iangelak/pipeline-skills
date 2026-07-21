@@ -1,0 +1,17 @@
+{
+  "id": "15424929597",
+  "name": "rhai-cpu-ubi9-x86_64-bootstrap-and-onboard",
+  "stage": "bootstrap",
+  "status": "failed",
+  "url": "https://gitlab.com/redhat/rhel-ai/rhai/pipeline/-/jobs/15424929597",
+  "duration": 8634.88327,
+  "failure_reason": "script_failure",
+  "kind": "",
+  "allow_failure": false,
+  "retried": false,
+  "collection": "rhai",
+  "variant": "cpu",
+  "os": "ubi9",
+  "architecture": "x86_64",
+  "action": "bootstrap-and-onboard"
+}

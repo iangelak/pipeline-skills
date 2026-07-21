@@ -1,0 +1,89 @@
+L970: 
+L971:         # Handle .whl files
+L972:         location ~* \.whl$ {
+L973:             root /mnt/wheels-repo;
+L974:             add_header Content-Type application/octet-stream;
+L975:         }
+L976:     }
+L977: }'
+L978: [nginx_server.sh:80] echo 'Starting nginx web server on port 8080 serving /mnt/wheels-repo'
+L979: [nginx_server.sh:81] nginx -c /etc/nginx/builder.conf
+L980: Starting nginx web server on port 8080 serving /mnt/wheels-repo
+L981: [nginx_server.sh:84] sleep 2
+L982: [nginx_server.sh:87] pgrep nginx
+L983: Nginx started successfully
+L984: [nginx_server.sh:91] echo 'Nginx started successfully'
+L985: [bootstrap_and_onboard.sh:142] SECURITY_CONSTRAINTS_ARGS=
+L986: [bootstrap_and_onboard.sh:143] '[' -n '' ']'
+L987: [bootstrap_and_onboard.sh:151] fromager --constraints-file /mnt/computed-constraints.txt --error-log-file=/mnt/errors.log --log-file=/mnt/bootstrap.log --sdists-repo=/mnt/sdists-repo --wheels-repo=/mnt/wheels-repo --work-dir=/mnt/work-dir --build-wheel-server-url=http://localhost:8080/simple/ bootstrap --sdist-only --skip-constraints --cache-wheel-server-url=https://gitlab.com/api/v4/projects/84168327/packages/pypi/simple/ -r /mnt/computed-requirements.txt
+L988: 03:20:55 INFO logging debug information to /mnt/bootstrap.log
+L989: 03:20:55 INFO logging errors to /mnt/errors.log
+L990: 03:20:55 INFO primary settings file: overrides/settings.yaml
+L991: 03:20:55 INFO per-package settings dir: overrides/settings
+L992: 03:20:55 INFO variant: cpu-ubi9
+L993: 03:20:55 INFO patches dir: overrides/patches
+L994: 03:20:55 INFO maximum concurrent jobs: None
+L995: 03:20:55 INFO constraints files: /mnt/computed-constraints.txt
+L996: 03:20:55 INFO network isolation: True
+L997: 03:20:55 INFO external build wheel server: http://localhost:8080/simple/
+L998: 03:21:15 INFO loading settings from /work/overrides/settings.yaml
+L999: 03:21:15 INFO loading constraints from /mnt/computed-constraints.txt
+L1000: 03:21:15 INFO cache wheel server url: https://gitlab.com/api/v4/projects/84168327/packages/pypi/simple/
+L1001: 03:21:15 INFO bootstrapping 'cpu-ubi9' variant of [<Requirement('pip')>, <Requirement('setuptools')>, <Requirement('async-timeout')>, <Requirement('deepspeed')>, <Requirement('docling; platform_machine != "s390x"')>, <Requirement('its-hub[experimental,lm,research]==1.1.0')>, <Requirement('vllm==0.21.0+rhaiv.8')>, <Requirement('kubeflow')>, <Requirement('mlflow>=3.9.0rc0')>, <Requirement('protobuf')>, <Requirement('pypdfium2; platform_machine != "s390x"')>, <Requirement('sdg-hub[examples]; platform_machine != "s390x"')>, <Requirement('sdg-hub[examples]==0.9.4; platform_machine != "s390x"')>, <Requirement('sentencepiece')>, <Requirement('simpleeval')>, <Requirement('tensorboard')>, <Requirement('training-hub')>, <Requirement('typer-slim')>, <Requirement('typer-slim==0.21.0')>]
+L1002: 03:21:15 INFO no previous bootstrap data
+L1003: 03:21:15 INFO sdist-only (fast mode), getting metadata from sdists
+L1004: 03:21:15 INFO treating ['intel-cmplr-lib-ur', 'intel-openmp', 'perf-analyzer', 'tensorboard-data-server'] as pre-built wheels
+L1005: 
+L1006:   0%|                                                 | 0/38 [00:00<?, ?pkg/s]03:21:15 INFO recording bootstrap stack state to /mnt/work-dir/bootstrap-stack.json
+L1007: 03:21:15 INFO resolving and bootstrapping top-level dependencies
+L1008: 03:21:15 INFO pip: pip resolves to 26.1.2
+L1009: 03:21:15 INFO setuptools: setuptools resolves to 83.0.0
+L1010: 03:21:15 INFO async-timeout: async-timeout resolves to 5.0.1
+L1011: 03:21:15 INFO deepspeed: deepspeed resolves to 0.19.2
+L1012: 03:21:15 INFO docling: docling; platform_machine != "s390x" resolves to 2.113.0
+L1013: 03:21:15 INFO its-hub: cooldown bypassed as the top-level requirement uses == pin
+L1014: 03:21:15 INFO its-hub: its-hub[experimental,lm,research]==1.1.0 resolves to 1.1.0
+L1015: 03:21:15 INFO vllm: vllm: found get_resolver_provider override
+L1016: 03:21:15 INFO vllm: vllm: override method get_resolver_provider returned <fromager.resolver.GitLabTagProvider object at 0x7c7cd781b9e0>
+L1017: 03:21:15 INFO vllm: cooldown bypassed as the top-level requirement uses == pin
+L1018: 
+L1019:   0%|                                                 | 0/38 [00:03<?, ?pkg/s]
+L1020: 03:21:18 ERROR vllm: Unable to resolve requirement specifier vllm==0.21.0+rhaiv.8 with constraint vllm<0.25.0,>=0.24.0 using GitLab tag resolver (project: https://gitlab.com/redhat/rhel-ai/core/mirrors/github/neuralmagic/nm-vllm-ent): found no match for vllm==0.21.0+rhaiv.8 using GitLab tag resolver (project: https://gitlab.com/redhat/rhel-ai/core/mirrors/github/neuralmagic/nm-vllm-ent) because found no match for vllm==0.21.0+rhaiv.8 using GitLab tag resolver (project: https://gitlab.com/redhat/rhel-ai/core/mirrors/github/neuralmagic/nm-vllm-ent)
+L1021: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L1022: [nginx_server.sh:12] local outdir=/mnt
+L1023: [nginx_server.sh:15] pgrep nginx
+L1024: Shutting down nginx
+L1025: [nginx_server.sh:16] echo 'Shutting down nginx'
+L1026: [nginx_server.sh:17] nginx -s quit
+L1027: [nginx_server.sh:17] pkill nginx
+L1028: [nginx_server.sh:21] '[' -f /etc/nginx/builder.conf ']'
+L1029: [nginx_server.sh:22] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+L1030: [nginx_server.sh:23] rm -f /etc/nginx/builder.conf
+L1031: Removing nginx configuration /etc/nginx/builder.conf
+L1032: 
+L1033: 
+L1034: Running after_script
+L1035: Running after script...
+L1036: $ set +x
+L1037: $ podman secret rm --ignore aipcc-builder-netrc
+L1038: 69fa6c354f95b5de337638a6f
+L1039: 
+L1040: 
+L1041: Uploading artifacts for failed job
+L1042: Uploading artifacts...
+L1043: /builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories 
+L1044: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories 
+L1045: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories 
+L1046: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1047: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories 
+L1048: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1049: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1050: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories 
+L1051: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L1052: Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=a1ded5fd8d57f278-IAD id=15423643434 responseStatus=201 Created token=71_pFK7wZ
+L1053: 
+L1054: 
+L1055: Cleaning up project directory and file based variables
+L1056: 
+L1057: ERROR: Job failed: exit code 1
+[Filtered: 1058 total lines -> 88 shown, 1 ERROR, 0 WARNING]

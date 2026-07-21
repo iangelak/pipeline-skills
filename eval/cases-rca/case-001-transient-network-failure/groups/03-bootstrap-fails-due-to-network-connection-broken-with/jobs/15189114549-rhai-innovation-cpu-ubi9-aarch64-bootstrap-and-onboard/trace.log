@@ -1,0 +1,103 @@
+[0KRunning with gitlab-runner 18.2.0 (c24769e8)[0;m
+[0K  on pe-runners uy9G8Mm6i, system ID: s_98523bec42a0[0;m
+[0K  feature flags: FF_SCRIPT_SECTIONS:true[0;m
+[0K[36;1mResolving secrets[0;m[0;m
+section_start:1783297136:prepare_executor
+[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2 ...[0;m
+[0KUsing effective pull policy of [always] for container registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2[0;m
+[0KAuthenticating with credentials from job payload (GitLab Registry)[0;m
+[0KPulling docker image registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2 ...[0;m
+[0KUsing docker image sha256:2ceb1c7c95295fdc08c5655b465b00a8be563340aeb02ce570367154f7ef6663 for registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable:v5.8.2 with digest registry.gitlab.com/redhat/rhel-ai/wheels/builder/podman-stable@sha256:614076f3dbfc26c41945786d827d3ce77e1af7e8b3493064668826c6a6bf1a33 ...[0;m
+section_end:1783297164:prepare_executor
+[0Ksection_start:1783297164:prepare_script
+[0K[0K[36;1mPreparing environment[0;m[0;m
+[0KUsing effective pull policy of [always] for container sha256:24adecdcde0e0136cf2784cd19ebc90aee406cc0a9009ca4b54c142354e338cd[0;m
+Running on runner-uy9g8mm6i-project-73796641-concurrent-0 via runner-uy9g8mm6i-aipcc-large-aarc-1783296527-4bfa3b97...
+section_end:1783297164:prepare_script
+[0Ksection_start:1783297164:get_sources
+[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mGitaly correlation ID: a16a6f5a6c48fb02-IAD[0;m
+
+[... 3631 lines trimmed for eval fixture ...]
+
+00:22:13 INFO MarkupSafe-3.0.3: MarkupSafe: wheel filename 'markupsafe-3.0.3-2-cp312-cp312-linux_aarch64.whl' has expected name 'markupsafe' and version 3.0.3
+00:22:13 INFO MarkupSafe-3.0.3: getting installation dependencies from /mnt/wheels-repo/downloads/markupsafe-3.0.3-2-cp312-cp312-linux_aarch64.whl
+
+ 77%|âââââââââââââââââââââââââââââ         | 239/312 [00:48<00:05, 14.31pkg/s]00:22:13 INFO fsspec-2026.6.0: new install dependency fsspec>=0.8.5 resolves to 2026.6.0
+00:22:13 INFO fsspec-2026.6.0: preparing source
+00:22:13 INFO fsspec-2026.6.0: looking for existing wheel for version 2026.6.0 with build tag (2, '') in /mnt/wheels-repo/build
+00:22:13 INFO fsspec-2026.6.0: looking for existing wheel for version 2026.6.0 with build tag (2, '') in /mnt/wheels-repo/downloads
+00:22:13 INFO fsspec-2026.6.0: found existing wheel /mnt/wheels-repo/downloads/fsspec-2026.6.0-2-py3-none-any.whl
+00:22:13 INFO fsspec-2026.6.0: extracted /mnt/work-dir/fsspec-2026.6.0/build-backend-requirements.txt
+00:22:13 INFO fsspec-2026.6.0: extracted /mnt/work-dir/fsspec-2026.6.0/build-sdist-requirements.txt
+00:22:13 INFO fsspec-2026.6.0: extracted /mnt/work-dir/fsspec-2026.6.0/build-system-requirements.txt
+00:22:13 INFO fsspec-2026.6.0: extracted build requirements from wheel into /mnt/work-dir/fsspec-2026.6.0
+00:22:13 INFO fsspec-2026.6.0: created build environment in /mnt/work-dir/fsspec-2026.6.0/build-3.12.9
+00:22:13 INFO fsspec-2026.6.0: getting build system dependencies for fsspec>=0.8.5 in /mnt/work-dir/fsspec-2026.6.0/fsspec-2026.6
+00:22:13 INFO fsspec-2026.6.0: loading build system dependencies from /mnt/work-dir/fsspec-2026.6.0/build-system-requirements.txt
+00:22:13 INFO hatchling: resolve for build-system requirement
+00:22:13 INFO hatch-vcs: resolve for build-system requirement
+00:22:13 INFO fsspec-2026.6.0: installed dependencies {<Requirement('hatch-vcs')>, <Requirement('hatchling>=1.27.0')>} into build environment in /mnt/work-dir/fsspec-2026.6.0/build-3.12.9
+00:22:13 INFO fsspec-2026.6.0: getting build backend dependencies for fsspec>=0.8.5 in /mnt/work-dir/fsspec-2026.6.0/fsspec-2026.6
+00:22:13 INFO fsspec-2026.6.0: loading build backend dependencies from /mnt/work-dir/fsspec-2026.6.0/build-backend-requirements.txt
+00:22:13 INFO fsspec-2026.6.0: getting build sdist dependencies for fsspec>=0.8.5 in /mnt/work-dir/fsspec-2026.6.0/fsspec-2026.6
+00:22:13 INFO fsspec-2026.6.0: loading build sdist dependencies from /mnt/work-dir/fsspec-2026.6.0/build-sdist-requirements.txt
+00:22:13 INFO fsspec-2026.6.0: starting post_bootstrap hooks for fsspec==2026.6.0, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/fsspec-2026.6.0-2-py3-none-any.whl
+00:22:13 INFO fsspec-2026.6.0: fsspec: wheel filename 'fsspec-2026.6.0-2-py3-none-any.whl' has expected name 'fsspec' and version 2026.6.0
+00:22:13 INFO fsspec-2026.6.0: getting installation dependencies from /mnt/wheels-repo/downloads/fsspec-2026.6.0-2-py3-none-any.whl
+
+ 77%|ââââââââââââââââââââââââââââââ        | 243/314 [00:48<00:04, 16.66pkg/s]00:22:18 INFO torchvision-0.26.0: installed dependencies {<Requirement('torch')>, <Requirement('setuptools')>, <Requirement('wheel')>} into build environment in /mnt/work-dir/torchvision-0.26.0/build-3.12.9
+00:22:18 INFO torchvision-0.26.0: getting build backend dependencies for torchvision in /mnt/work-dir/torchvision-0.26.0/torchvision-0.26
+00:22:18 INFO torchvision-0.26.0: loading build backend dependencies from /mnt/work-dir/torchvision-0.26.0/build-backend-requirements.txt
+00:22:18 INFO torchvision-0.26.0: getting build sdist dependencies for torchvision in /mnt/work-dir/torchvision-0.26.0/torchvision-0.26
+00:22:18 INFO torchvision-0.26.0: loading build sdist dependencies from /mnt/work-dir/torchvision-0.26.0/build-sdist-requirements.txt
+00:22:18 INFO torchvision-0.26.0: starting post_bootstrap hooks for torchvision==0.26.0, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/torchvision-0.26.0-3-cp312-cp312-linux_aarch64.whl
+00:22:18 INFO torchvision-0.26.0: torchvision: wheel filename 'torchvision-0.26.0-3-cp312-cp312-linux_aarch64.whl' has expected name 'torchvision' and version 0.26.0
+00:22:18 INFO torchvision-0.26.0: getting installation dependencies from /mnt/wheels-repo/downloads/torchvision-0.26.0-3-cp312-cp312-linux_aarch64.whl
+00:22:18 INFO torchvision-0.26.0: adding ('torchvision', '0.26.0') to build order
+00:22:18 INFO torch: resolve for install requirement
+00:22:18 INFO pillow: resolve for install requirement
+00:22:18 INFO numpy: resolve for install requirement
+
+ 78%|ââââââââââââââââââââââââââââââ        | 247/317 [00:53<00:33,  2.12pkg/s]
+ 78%|ââââââââââââââââââââââââââââââ        | 247/317 [00:53<00:15,  4.59pkg/s]
+00:22:18 ERROR ('Connection broken: IncompleteRead(228449 bytes read, 185764 more expected)', IncompleteRead(228449 bytes read, 185764 more expected))
+[[36mbootstrap_and_onboard.sh:1[0m] cleanup_nginx /mnt
+[[36mnginx_server.sh:12[0m] local outdir=/mnt
+[[36mnginx_server.sh:15[0m] pgrep nginx
+[[36mnginx_server.sh:16[0m] echo 'Shutting down nginx'
+[[36mnginx_server.sh:17[0m] nginx -s quit
+Shutting down nginx
+[[36mnginx_server.sh:17[0m] pkill nginx
+[[36mnginx_server.sh:21[0m] '[' -f /etc/nginx/builder.conf ']'
+[[36mnginx_server.sh:22[0m] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+[[36mnginx_server.sh:23[0m] rm -f /etc/nginx/builder.conf
+Removing nginx configuration /etc/nginx/builder.conf
+section_end:1783297345:step_script
+[0Ksection_start:1783297345:after_script
+[0K[0K[36;1mRunning after_script[0;m[0;m
+[32;1mRunning after script...[0;m
+[32;1m$ set +x[0;m
+[32;1m$ podman secret rm --ignore aipcc-builder-netrc[0;m
+f1a9a46f04ffdbae52032c515
+section_end:1783297345:after_script
+[0Ksection_start:1783297345:upload_artifacts_on_failure
+[0K[0K[36;1mUploading artifacts for failed job[0;m[0;m
+[32;1mUploading artifacts...[0;m
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: found 3 matching artifact files and directories[0;m 
+[0;33mWARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline)[0;m 
+/builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories[0;m 
+[0;33mWARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline)[0;m 
+Uploading artifacts as "archive" to coordinator... 201 Created[0;m  correlation_id[0;m=a16a747bfc76ad34-IAD id[0;m=15189114549 responseStatus[0;m=201 Created token[0;m=71_pxJ4a-
+section_end:1783297346:upload_artifacts_on_failure
+[0Ksection_start:1783297346:cleanup_file_variables
+[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1783297347:cleanup_file_variables
+[0K[31;1mERROR: Job failed: exit code 1
+[0;m

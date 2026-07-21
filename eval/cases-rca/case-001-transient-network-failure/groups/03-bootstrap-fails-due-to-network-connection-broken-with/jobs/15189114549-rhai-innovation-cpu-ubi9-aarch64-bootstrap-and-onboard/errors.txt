@@ -1,0 +1,89 @@
+L3643: 00:22:13 INFO MarkupSafe-3.0.3: getting build system dependencies for MarkupSafe>=2.0 in /mnt/work-dir/MarkupSafe-3.0.3/MarkupSafe-3.0
+L3644: 00:22:13 INFO MarkupSafe-3.0.3: loading build system dependencies from /mnt/work-dir/MarkupSafe-3.0.3/build-system-requirements.txt
+L3645: 00:22:13 INFO setuptools: resolve for build-system requirement
+L3646: 00:22:13 INFO MarkupSafe-3.0.3: installed dependencies {<Requirement('setuptools>=77')>} into build environment in /mnt/work-dir/MarkupSafe-3.0.3/build-3.12.9
+L3647: 00:22:13 INFO MarkupSafe-3.0.3: getting build backend dependencies for MarkupSafe>=2.0 in /mnt/work-dir/MarkupSafe-3.0.3/MarkupSafe-3.0
+L3648: 00:22:13 INFO MarkupSafe-3.0.3: loading build backend dependencies from /mnt/work-dir/MarkupSafe-3.0.3/build-backend-requirements.txt
+L3649: 00:22:13 INFO MarkupSafe-3.0.3: getting build sdist dependencies for MarkupSafe>=2.0 in /mnt/work-dir/MarkupSafe-3.0.3/MarkupSafe-3.0
+L3650: 00:22:13 INFO MarkupSafe-3.0.3: loading build sdist dependencies from /mnt/work-dir/MarkupSafe-3.0.3/build-sdist-requirements.txt
+L3651: 00:22:13 INFO MarkupSafe-3.0.3: starting post_bootstrap hooks for markupsafe==3.0.3, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/markupsafe-3.0.3-2-cp312-cp312-linux_aarch64.whl
+L3652: 00:22:13 INFO MarkupSafe-3.0.3: MarkupSafe: wheel filename 'markupsafe-3.0.3-2-cp312-cp312-linux_aarch64.whl' has expected name 'markupsafe' and version 3.0.3
+L3653: 00:22:13 INFO MarkupSafe-3.0.3: getting installation dependencies from /mnt/wheels-repo/downloads/markupsafe-3.0.3-2-cp312-cp312-linux_aarch64.whl
+L3654: 
+L3655:  77%|âââââââââââââââââââââââââââââ         | 239/312 [00:48<00:05, 14.31pkg/s]00:22:13 INFO fsspec-2026.6.0: new install dependency fsspec>=0.8.5 resolves to 2026.6.0
+L3656: 00:22:13 INFO fsspec-2026.6.0: preparing source
+L3657: 00:22:13 INFO fsspec-2026.6.0: looking for existing wheel for version 2026.6.0 with build tag (2, '') in /mnt/wheels-repo/build
+L3658: 00:22:13 INFO fsspec-2026.6.0: looking for existing wheel for version 2026.6.0 with build tag (2, '') in /mnt/wheels-repo/downloads
+L3659: 00:22:13 INFO fsspec-2026.6.0: found existing wheel /mnt/wheels-repo/downloads/fsspec-2026.6.0-2-py3-none-any.whl
+L3660: 00:22:13 INFO fsspec-2026.6.0: extracted /mnt/work-dir/fsspec-2026.6.0/build-backend-requirements.txt
+L3661: 00:22:13 INFO fsspec-2026.6.0: extracted /mnt/work-dir/fsspec-2026.6.0/build-sdist-requirements.txt
+L3662: 00:22:13 INFO fsspec-2026.6.0: extracted /mnt/work-dir/fsspec-2026.6.0/build-system-requirements.txt
+L3663: 00:22:13 INFO fsspec-2026.6.0: extracted build requirements from wheel into /mnt/work-dir/fsspec-2026.6.0
+L3664: 00:22:13 INFO fsspec-2026.6.0: created build environment in /mnt/work-dir/fsspec-2026.6.0/build-3.12.9
+L3665: 00:22:13 INFO fsspec-2026.6.0: getting build system dependencies for fsspec>=0.8.5 in /mnt/work-dir/fsspec-2026.6.0/fsspec-2026.6
+L3666: 00:22:13 INFO fsspec-2026.6.0: loading build system dependencies from /mnt/work-dir/fsspec-2026.6.0/build-system-requirements.txt
+L3667: 00:22:13 INFO hatchling: resolve for build-system requirement
+L3668: 00:22:13 INFO hatch-vcs: resolve for build-system requirement
+L3669: 00:22:13 INFO fsspec-2026.6.0: installed dependencies {<Requirement('hatch-vcs')>, <Requirement('hatchling>=1.27.0')>} into build environment in /mnt/work-dir/fsspec-2026.6.0/build-3.12.9
+L3670: 00:22:13 INFO fsspec-2026.6.0: getting build backend dependencies for fsspec>=0.8.5 in /mnt/work-dir/fsspec-2026.6.0/fsspec-2026.6
+L3671: 00:22:13 INFO fsspec-2026.6.0: loading build backend dependencies from /mnt/work-dir/fsspec-2026.6.0/build-backend-requirements.txt
+L3672: 00:22:13 INFO fsspec-2026.6.0: getting build sdist dependencies for fsspec>=0.8.5 in /mnt/work-dir/fsspec-2026.6.0/fsspec-2026.6
+L3673: 00:22:13 INFO fsspec-2026.6.0: loading build sdist dependencies from /mnt/work-dir/fsspec-2026.6.0/build-sdist-requirements.txt
+L3674: 00:22:13 INFO fsspec-2026.6.0: starting post_bootstrap hooks for fsspec==2026.6.0, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/fsspec-2026.6.0-2-py3-none-any.whl
+L3675: 00:22:13 INFO fsspec-2026.6.0: fsspec: wheel filename 'fsspec-2026.6.0-2-py3-none-any.whl' has expected name 'fsspec' and version 2026.6.0
+L3676: 00:22:13 INFO fsspec-2026.6.0: getting installation dependencies from /mnt/wheels-repo/downloads/fsspec-2026.6.0-2-py3-none-any.whl
+L3677: 
+L3678:  77%|ââââââââââââââââââââââââââââââ        | 243/314 [00:48<00:04, 16.66pkg/s]00:22:18 INFO torchvision-0.26.0: installed dependencies {<Requirement('torch')>, <Requirement('setuptools')>, <Requirement('wheel')>} into build environment in /mnt/work-dir/torchvision-0.26.0/build-3.12.9
+L3679: 00:22:18 INFO torchvision-0.26.0: getting build backend dependencies for torchvision in /mnt/work-dir/torchvision-0.26.0/torchvision-0.26
+L3680: 00:22:18 INFO torchvision-0.26.0: loading build backend dependencies from /mnt/work-dir/torchvision-0.26.0/build-backend-requirements.txt
+L3681: 00:22:18 INFO torchvision-0.26.0: getting build sdist dependencies for torchvision in /mnt/work-dir/torchvision-0.26.0/torchvision-0.26
+L3682: 00:22:18 INFO torchvision-0.26.0: loading build sdist dependencies from /mnt/work-dir/torchvision-0.26.0/build-sdist-requirements.txt
+L3683: 00:22:18 INFO torchvision-0.26.0: starting post_bootstrap hooks for torchvision==0.26.0, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/torchvision-0.26.0-3-cp312-cp312-linux_aarch64.whl
+L3684: 00:22:18 INFO torchvision-0.26.0: torchvision: wheel filename 'torchvision-0.26.0-3-cp312-cp312-linux_aarch64.whl' has expected name 'torchvision' and version 0.26.0
+L3685: 00:22:18 INFO torchvision-0.26.0: getting installation dependencies from /mnt/wheels-repo/downloads/torchvision-0.26.0-3-cp312-cp312-linux_aarch64.whl
+L3686: 00:22:18 INFO torchvision-0.26.0: adding ('torchvision', '0.26.0') to build order
+L3687: 00:22:18 INFO torch: resolve for install requirement
+L3688: 00:22:18 INFO pillow: resolve for install requirement
+L3689: 00:22:18 INFO numpy: resolve for install requirement
+L3690: 
+L3691:  78%|ââââââââââââââââââââââââââââââ        | 247/317 [00:53<00:33,  2.12pkg/s]
+L3692:  78%|ââââââââââââââââââââââââââââââ        | 247/317 [00:53<00:15,  4.59pkg/s]
+L3693: 00:22:18 ERROR ('Connection broken: IncompleteRead(228449 bytes read, 185764 more expected)', IncompleteRead(228449 bytes read, 185764 more expected))
+L3694: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L3695: [nginx_server.sh:12] local outdir=/mnt
+L3696: [nginx_server.sh:15] pgrep nginx
+L3697: [nginx_server.sh:16] echo 'Shutting down nginx'
+L3698: [nginx_server.sh:17] nginx -s quit
+L3699: Shutting down nginx
+L3700: [nginx_server.sh:17] pkill nginx
+L3701: [nginx_server.sh:21] '[' -f /etc/nginx/builder.conf ']'
+L3702: [nginx_server.sh:22] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+L3703: [nginx_server.sh:23] rm -f /etc/nginx/builder.conf
+L3704: Removing nginx configuration /etc/nginx/builder.conf
+L3705: 
+L3706: 
+L3707: Running after_script
+L3708: Running after script...
+L3709: $ set +x
+L3710: $ podman secret rm --ignore aipcc-builder-netrc
+L3711: f1a9a46f04ffdbae52032c515
+L3712: 
+L3713: 
+L3714: Uploading artifacts for failed job
+L3715: Uploading artifacts...
+L3716: /builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories 
+L3717: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories 
+L3718: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories 
+L3719: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: found 1 matching artifact files and directories 
+L3720: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories 
+L3721: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: found 3 matching artifact files and directories 
+L3722: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L3723: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories 
+L3724: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L3725: Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=a16a747bfc76ad34-IAD id=15189114549 responseStatus=201 Created token=71_pxJ4a-
+L3726: 
+L3727: 
+L3728: Cleaning up project directory and file based variables
+L3729: 
+L3730: ERROR: Job failed: exit code 1
+[Filtered: 3731 total lines -> 88 shown, 1 ERROR, 1 WARNING]

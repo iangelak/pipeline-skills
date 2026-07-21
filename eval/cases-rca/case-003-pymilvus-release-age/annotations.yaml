@@ -1,0 +1,12 @@
+difficulty: medium
+source: "pipeline #2689294783, 3.5-stable, 2026-07-20, group 03"
+confidence_expected: high
+has_resolution: true
+cascade: false
+group_consistency: mixed
+notes: |
+  Real artifacts. The failure manifests differently per architecture: x86_64 hits
+  release-age cooldown (pymilvus 3.x published <3 days ago), aarch64 finds no
+  sdist at all. Both stem from the same root cause — langchain-milvus 0.4.0
+  bumped its pymilvus requirement to >=3.0.0. group_consistency is "mixed"
+  because the error messages differ across architectures.

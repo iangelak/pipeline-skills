@@ -1,0 +1,89 @@
+L5695: 00:30:07 INFO pydantic-2.13.4: loading build system dependencies from /mnt/work-dir/pydantic-2.13.4/build-system-requirements.txt
+L5696: 00:30:07 INFO hatchling: resolve for build-system requirement
+L5697: 00:30:07 INFO hatch-fancy-pypi-readme: resolve for build-system requirement
+L5698: 
+L5699:  84%|ââââââââââââââââââââââââââââââââ      | 496/587 [02:09<00:19,  4.75pkg/s]00:30:08 INFO pydantic-2.13.4: installed dependencies {<Requirement('hatchling')>, <Requirement('hatch-fancy-pypi-readme>=22.5.0')>} into build environment in /mnt/work-dir/pydantic-2.13.4/build-3.12.9
+L5700: 00:30:08 INFO pydantic-2.13.4: getting build backend dependencies for pydantic[email]<3,>=2 in /mnt/work-dir/pydantic-2.13.4/pydantic-2.13
+L5701: 00:30:08 INFO pydantic-2.13.4: loading build backend dependencies from /mnt/work-dir/pydantic-2.13.4/build-backend-requirements.txt
+L5702: 00:30:08 INFO pydantic-2.13.4: getting build sdist dependencies for pydantic[email]<3,>=2 in /mnt/work-dir/pydantic-2.13.4/pydantic-2.13
+L5703: 00:30:08 INFO pydantic-2.13.4: loading build sdist dependencies from /mnt/work-dir/pydantic-2.13.4/build-sdist-requirements.txt
+L5704: 00:30:08 INFO pydantic-2.13.4: starting post_bootstrap hooks for pydantic==2.13.4, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/pydantic-2.13.4-8-py3-none-any.whl
+L5705: 00:30:08 INFO pydantic-2.13.4: pydantic: wheel filename 'pydantic-2.13.4-8-py3-none-any.whl' has expected name 'pydantic' and version 2.13.4
+L5706: 00:30:08 INFO pydantic-2.13.4: getting installation dependencies from /mnt/wheels-repo/downloads/pydantic-2.13.4-8-py3-none-any.whl
+L5707: 00:30:08 INFO pydantic-2.13.4: adding ('pydantic', '2.13.4') to build order
+L5708: 00:30:08 INFO typing-inspection: resolve for install requirement
+L5709: 00:30:08 INFO typing-extensions: resolve for install requirement
+L5710: 00:30:08 INFO pydantic-core: resolve for install requirement
+L5711: 00:30:08 INFO email-validator: resolve for install requirement
+L5712: 00:30:08 INFO annotated-types: resolve for install requirement
+L5713: 00:30:08 INFO typing-inspection-0.4.2: new install dependency typing-inspection>=0.4.2 resolves to 0.4.2
+L5714: 00:30:08 INFO typing-inspection-0.4.2: preparing source
+L5715: 00:30:08 INFO typing-inspection-0.4.2: looking for existing wheel for version 0.4.2 with build tag (8, '') in /mnt/wheels-repo/build
+L5716: 00:30:08 INFO typing-inspection-0.4.2: looking for existing wheel for version 0.4.2 with build tag (8, '') in /mnt/wheels-repo/downloads
+L5717: 00:30:08 INFO typing-inspection-0.4.2: checking if wheel was already uploaded to https://gitlab.com/api/v4/projects/83010518/packages/pypi/simple/
+L5718: 00:30:08 INFO typing-inspection-0.4.2: has expected build tag (8, '')
+L5719: 00:30:08 INFO typing-inspection-0.4.2: downloading pre-built wheel https://gitlab.com/api/v4/projects/83010518/packages/pypi/files/9408ba7c0701cd48020333f29bdc9cf5c3d021ca30e1d89f15fc78ad30430459/typing_inspection-0.4.2-8-py3-none-any.whl
+L5720: 00:30:08 INFO typing-inspection-0.4.2: saved /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+L5721: 00:30:08 INFO typing-inspection-0.4.2: saved wheel to /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+L5722: 00:30:08 INFO typing-inspection-0.4.2: found built wheel on cache server
+L5723: 00:30:08 INFO typing-inspection-0.4.2: extracted /mnt/work-dir/typing-inspection-0.4.2/build-backend-requirements.txt
+L5724: 00:30:08 INFO typing-inspection-0.4.2: extracted /mnt/work-dir/typing-inspection-0.4.2/build-sdist-requirements.txt
+L5725: 00:30:08 INFO typing-inspection-0.4.2: extracted /mnt/work-dir/typing-inspection-0.4.2/build-system-requirements.txt
+L5726: 00:30:08 INFO typing-inspection-0.4.2: extracted build requirements from wheel into /mnt/work-dir/typing-inspection-0.4.2
+L5727: 00:30:08 INFO typing-inspection-0.4.2: created build environment in /mnt/work-dir/typing-inspection-0.4.2/build-3.12.9
+L5728: 00:30:08 INFO typing-inspection-0.4.2: getting build system dependencies for typing-inspection>=0.4.2 in /mnt/work-dir/typing-inspection-0.4.2/typing-inspection-0.4
+L5729: 00:30:08 INFO typing-inspection-0.4.2: loading build system dependencies from /mnt/work-dir/typing-inspection-0.4.2/build-system-requirements.txt
+L5730: 00:30:08 INFO hatchling: resolve for build-system requirement
+L5731: 
+L5732:  84%|ââââââââââââââââââââââââââââââââ      | 498/593 [02:10<00:22,  4.16pkg/s]00:30:08 INFO typing-inspection-0.4.2: installed dependencies {<Requirement('hatchling>=1.27.0')>} into build environment in /mnt/work-dir/typing-inspection-0.4.2/build-3.12.9
+L5733: 00:30:08 INFO typing-inspection-0.4.2: getting build backend dependencies for typing-inspection>=0.4.2 in /mnt/work-dir/typing-inspection-0.4.2/typing-inspection-0.4
+L5734: 00:30:08 INFO typing-inspection-0.4.2: loading build backend dependencies from /mnt/work-dir/typing-inspection-0.4.2/build-backend-requirements.txt
+L5735: 00:30:08 INFO typing-inspection-0.4.2: getting build sdist dependencies for typing-inspection>=0.4.2 in /mnt/work-dir/typing-inspection-0.4.2/typing-inspection-0.4
+L5736: 00:30:08 INFO typing-inspection-0.4.2: loading build sdist dependencies from /mnt/work-dir/typing-inspection-0.4.2/build-sdist-requirements.txt
+L5737: 00:30:08 INFO typing-inspection-0.4.2: starting post_bootstrap hooks for typing-inspection==0.4.2, sdist: None, wheel_filename: /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+L5738: 00:30:08 INFO typing-inspection-0.4.2: typing-inspection: wheel filename 'typing_inspection-0.4.2-8-py3-none-any.whl' has expected name 'typing-inspection' and version 0.4.2
+L5739: 00:30:08 INFO typing-inspection-0.4.2: getting installation dependencies from /mnt/wheels-repo/downloads/typing_inspection-0.4.2-8-py3-none-any.whl
+L5740: 00:30:08 INFO typing-inspection-0.4.2: adding ('typing-inspection', '0.4.2') to build order
+L5741: 00:30:08 INFO typing-extensions: resolve for install requirement
+L5742: 
+L5743:  84%|ââââââââââââââââââââââââââââââââ      | 499/594 [02:10<00:21,  4.50pkg/s]
+L5744:  84%|ââââââââââââââââââââââââââââââââ      | 501/594 [02:10<00:24,  3.85pkg/s]
+L5745: 00:30:08 ERROR ('Connection broken: IncompleteRead(1144989 bytes read, 344486 more expected)', IncompleteRead(1144989 bytes read, 344486 more expected))
+L5746: [bootstrap_and_onboard.sh:1] cleanup_nginx /mnt
+L5747: [nginx_server.sh:12] local outdir=/mnt
+L5748: [nginx_server.sh:15] pgrep nginx
+L5749: [nginx_server.sh:16] echo 'Shutting down nginx'
+L5750: [nginx_server.sh:17] nginx -s quit
+L5751: Shutting down nginx
+L5752: [nginx_server.sh:17] pkill nginx
+L5753: [nginx_server.sh:21] '[' -f /etc/nginx/builder.conf ']'
+L5754: [nginx_server.sh:22] echo 'Removing nginx configuration /etc/nginx/builder.conf'
+L5755: [nginx_server.sh:23] rm -f /etc/nginx/builder.conf
+L5756: Removing nginx configuration /etc/nginx/builder.conf
+L5757: 
+L5758: 
+L5759: Running after_script
+L5760: Running after script...
+L5761: $ set +x
+L5762: $ podman secret rm --ignore aipcc-builder-netrc
+L5763: ac01cfce163c38db016f6e949
+L5764: 
+L5765: 
+L5766: Uploading artifacts for failed job
+L5767: Uploading artifacts...
+L5768: /builds/redhat/rhel-ai/rhai/pipeline/mnt/*.log: found 4 matching artifact files and directories 
+L5769: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-constraints.txt: found 1 matching artifact files and directories 
+L5770: /builds/redhat/rhel-ai/rhai/pipeline/mnt/computed-requirements.txt: found 1 matching artifact files and directories 
+L5771: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*/*.log: found 1 matching artifact files and directories 
+L5772: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/logs/: found 1 matching artifact files and directories 
+L5773: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/*.json: found 3 matching artifact files and directories 
+L5774: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/constraints.txt: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L5775: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/merged-constraints.txt: found 1 matching artifact files and directories 
+L5776: WARNING: /builds/redhat/rhel-ai/rhai/pipeline/mnt/work-dir/build-sequence-summary.md: no matching files. Ensure that the artifact path is relative to the working directory (/builds/redhat/rhel-ai/rhai/pipeline) 
+L5777: Uploading artifacts as "archive" to coordinator... 201 Created  correlation_id=a16a7fdbf8c6ecd2-IAD id=15189139422 responseStatus=201 Created token=71_or_eP1
+L5778: 
+L5779: 
+L5780: Cleaning up project directory and file based variables
+L5781: 
+L5782: ERROR: Job failed: exit code 1
+[Filtered: 5783 total lines -> 88 shown, 1 ERROR, 7 WARNING]

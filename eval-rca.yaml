@@ -1,0 +1,205 @@
+name: pipeline-rca
+description: Evaluate root cause analysis quality for CI/CD pipeline failure groups
+
+execution:
+  mode: case
+  skill: pipeline-rca
+  arguments: "{{ input.prompt }}"
+  timeout: 900
+
+runner:
+  type: claude-code
+  plugin_dirs:
+    - .
+
+models:
+  skill: claude-opus-4-6
+  judge: claude-opus-4-6
+
+dataset:
+  path: eval/cases-rca
+  schema: |
+    Each case directory represents one CI/CD pipeline error group with:
+    - input.yaml: YAML file with 'prompt' field (the skill invocation command,
+      always "/pipeline-rca")
+    - _context/rca-context.json: Dynamic context with group metadata (id, name,
+      collections, actions, error_description), pipeline info (project_path, ref,
+      sha, builder_project_path), affected_jobs_table, file_paths_table,
+      dependency_versions, repo_submodule_path, and group_dir path
+    - pipeline-context.json: Pipeline-level metadata (id, url, ref, sha, job_summary)
+    - groups/<group_id>/jobs/<job_id>-<job_name>/: Per-job directories containing:
+      - trace.log: Full CI job trace log (potentially 1M+ chars)
+      - errors.txt: Preprocessed error excerpts (50-90 lines)
+      - job-metadata.json: Job metadata
+    - annotations.yaml: Expected outcomes with fields: difficulty (easy|medium),
+      confidence_expected (high|medium|low), has_resolution (boolean),
+      cascade (boolean), group_consistency (consistent|mixed), source, notes
+    - finding-reference.json: Gold standard finding.json for comparison
+    - sections-reference/: Gold standard section files (error-overview.md,
+      root-cause.md, resolution.md, feedback.md)
+    - reference.md: Gold standard full assembled report
+
+outputs:
+  - path: groups
+    schema: |
+      The skill writes into groups/<group_id>/:
+      - finding.json: Structured finding with required fields: group_id, title,
+        collections (array), error_summary, suggested_resolution_summary,
+        has_resolution_file (boolean), confidence (high|medium|low),
+        confidence_justification, cascade (boolean), group_consistency
+        (consistent|mixed), feedback_status (included|not_applicable),
+        references (array of {path, description}), resources_used
+        ({agent_docs[], skills[], tools[]})
+      - sections/error-overview.md: Brief error symptom narrative (5-20 lines)
+        with quoted errors in ```error fenced blocks
+      - sections/root-cause.md: Diagnostic analysis explaining WHY the error occurred
+      - sections/resolution.md: (conditional) Specific fix with file-scoped code blocks
+      - sections/feedback.md: (conditional) Process observations about analysis gaps
+
+traces:
+  stdout: true
+  stderr: true
+  events: true
+  metrics: true
+
+judges:
+  - name: finding_schema
+    description: |
+      Validates finding.json exists and has all required fields with valid
+      enum values. Checks structural correctness, not semantic accuracy.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      finding_files = [k for k in files if k.endswith("finding.json")]
+      if not finding_files:
+          return (False, "No finding.json found in output")
+      try:
+          finding = json.loads(files[finding_files[0]])
+      except json.JSONDecodeError as e:
+          return (False, f"Invalid JSON: {e}")
+      required = ["group_id", "title", "collections", "error_summary",
+                   "suggested_resolution_summary", "has_resolution_file",
+                   "confidence", "confidence_justification", "cascade",
+                   "group_consistency", "feedback_status", "references",
+                   "resources_used"]
+      missing = [f for f in required if f not in finding]
+      if missing:
+          return (False, f"Missing fields: {', '.join(missing)}")
+      if finding["confidence"] not in ("high", "medium", "low"):
+          return (False, f"Invalid confidence: {finding['confidence']}")
+      if finding["group_consistency"] not in ("consistent", "mixed"):
+          return (False, f"Invalid group_consistency: {finding['group_consistency']}")
+      if finding["feedback_status"] not in ("included", "not_applicable"):
+          return (False, f"Invalid feedback_status: {finding['feedback_status']}")
+      if not isinstance(finding["collections"], list):
+          return (False, "collections must be an array")
+      if not isinstance(finding["references"], list):
+          return (False, "references must be an array")
+      ru = finding.get("resources_used", {})
+      for key in ("agent_docs", "skills", "tools"):
+          if not isinstance(ru.get(key), list):
+              return (False, f"resources_used.{key} must be an array")
+      return (True, f"Valid finding.json with {len(finding['references'])} references")
+
+  - name: required_sections
+    description: |
+      Verifies that the required section files (error-overview.md and
+      root-cause.md) exist and contain meaningful content (>= 50 chars).
+    check: |
+      files = outputs.get("files", {})
+      required = {"error-overview.md": None, "root-cause.md": None}
+      for path, content in files.items():
+          for sec in required:
+              if path.endswith(f"sections/{sec}"):
+                  required[sec] = content
+      missing = [s for s, c in required.items() if c is None]
+      if missing:
+          return (False, f"Missing section files: {', '.join(missing)}")
+      short = [s for s, c in required.items() if len(c.strip()) < 50]
+      if short:
+          return (False, f"Section files too short: {', '.join(short)}")
+      return (True, f"Both required sections present with content")
+
+  - name: resolution_consistency
+    description: |
+      Cross-validates has_resolution_file in finding.json against physical
+      existence of sections/resolution.md and expected value from annotations.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      ann = outputs.get("annotations", {})
+      finding_files = [k for k in files if k.endswith("finding.json")]
+      if not finding_files:
+          return (False, "No finding.json to validate")
+      try:
+          finding = json.loads(files[finding_files[0]])
+      except (json.JSONDecodeError, KeyError):
+          return (False, "Cannot parse finding.json")
+      has_flag = finding.get("has_resolution_file", False)
+      has_file = any(k.endswith("sections/resolution.md") and len(v.strip()) > 10
+                     for k, v in files.items())
+      if has_flag != has_file:
+          return (False, f"has_resolution_file={has_flag} but file exists={has_file}")
+      expected = ann.get("has_resolution")
+      if expected is not None and has_flag != expected:
+          return (False, f"has_resolution_file={has_flag} but expected={expected}")
+      return (True, f"Resolution consistency OK (has_resolution={has_flag})")
+
+  - name: confidence_check
+    description: |
+      Compares the confidence level in finding.json against the expected level
+      from annotations. Passes on exact match or adjacent level.
+    check: |
+      import json
+      files = outputs.get("files", {})
+      ann = outputs.get("annotations", {})
+      expected = ann.get("confidence_expected")
+      if not expected:
+          return (True, "No expected confidence in annotations — skipped")
+      finding_files = [k for k in files if k.endswith("finding.json")]
+      if not finding_files:
+          return (False, "No finding.json to check confidence")
+      try:
+          finding = json.loads(files[finding_files[0]])
+      except (json.JSONDecodeError, KeyError):
+          return (False, "Cannot parse finding.json")
+      actual = finding.get("confidence")
+      if not actual:
+          return (False, "No confidence field in finding.json")
+      levels = ["low", "medium", "high"]
+      if actual not in levels or expected not in levels:
+          return (False, f"Invalid confidence values: actual={actual}, expected={expected}")
+      diff = abs(levels.index(actual) - levels.index(expected))
+      if diff == 0:
+          return (True, f"Confidence exact match: {actual}")
+      elif diff == 1:
+          return (True, f"Confidence adjacent: actual={actual}, expected={expected}")
+      else:
+          return (False, f"Confidence mismatch: actual={actual}, expected={expected}")
+
+  - name: analysis_quality
+    description: |
+      LLM judge scoring 1-5 on diagnostic accuracy, evidence quality,
+      confidence calibration, section structure, finding completeness, and
+      actionability of resolution. Uses the analysis-quality-judge rubric.
+    prompt_file: eval/prompts/analysis-quality-judge.md
+    context:
+      - eval/prompts/analysis-quality-judge.md
+
+thresholds:
+  finding_schema:
+    min_pass_rate: 1.0
+  required_sections:
+    min_pass_rate: 1.0
+  resolution_consistency:
+    min_pass_rate: 1.0
+  confidence_check:
+    min_pass_rate: 1.0
+  analysis_quality:
+    min_mean: 3.5
+
+reward:
+  mode: judge
+  judge: analysis_quality
+  normalize: true
+  gate: true
